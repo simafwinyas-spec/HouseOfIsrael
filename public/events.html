@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Events | House of Israel Assembly</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Lato:ital,wght@0,300;0,400;0,700;1,300&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .feast-calendar {
+      background: var(--dark-2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 40px;
+      margin-bottom: 60px;
+    }
+    .feast-calendar h3 {
+      font-family: var(--font-h);
+      font-size: 1.2rem;
+      color: var(--gold);
+      margin-bottom: 24px;
+      text-align: center;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    .feast-list {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 16px;
+    }
+    .feast-item {
+      background: rgba(201,168,76,0.07);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 16px;
+      text-align: center;
+    }
+    .feast-item .f-name { font-family: var(--font-h); font-size: 0.88rem; margin-bottom: 4px; color: var(--white); }
+    .feast-item .f-date { font-size: 0.75rem; color: var(--gold); font-weight: 700; letter-spacing: 1px; }
+    .feast-item .f-heb { font-size: 1rem; color: var(--gold); opacity: 0.6; margin-bottom: 6px; }
+    .reg-form-box {
+      background: var(--dark-2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 40px;
+    }
+    @media (max-width: 768px) {
+      .feast-list { grid-template-columns: 1fr; }
+      .feast-calendar { padding: 24px; }
+    }
+  </style>
+</head>
+<body>
+<canvas id="particles"></canvas>
+
+<nav class="navbar" id="navbar">
+  <div class="nav-wrap">
+    <a href="index.html" class="nav-logo">
+      <span class="logo-star">✡</span>
+      <div class="logo-text">
+        <span class="logo-main">House of Israel</span>
+        <span class="logo-sub">Assembly</span>
+      </div>
+    </a>
+    <div class="nav-menu" id="navMenu">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="about.html" class="nav-link">About</a>
+      <a href="sermons.html" class="nav-link">Sermons</a>
+      <a href="events.html" class="nav-link active">Events</a>
+      <a href="gallery.html" class="nav-link">Gallery</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+      <a href="give.html" class="nav-link give-link">Give ✡</a>
+    </div>
+    <div class="nav-toggle" id="navToggle"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a>
+      <i class="fas fa-chevron-right" style="font-size:0.6rem"></i>
+      <span style="color:var(--gold)">Events</span>
+    </div>
+    <div class="section-tag">Calendar</div>
+    <h1>Upcoming <span class="gold">Events</span></h1>
+    <p>Feasts, conferences, and community gatherings</p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+    <!-- Hebrew Feast Calendar -->
+    <div class="feast-calendar" data-aos="fade-up">
+      <h3>✡ 2025 Biblical Feast Calendar ✡</h3>
+      <div class="feast-list">
+        <div class="feast-item">
+          <div class="f-heb">פסח</div>
+          <div class="f-name">Passover (Pesach)</div>
+          <div class="f-date">April 12–20, 2025</div>
+        </div>
+        <div class="feast-item">
+          <div class="f-heb">שבועות</div>
+          <div class="f-name">Shavuot (Pentecost)</div>
+          <div class="f-date">June 1–3, 2025</div>
+        </div>
+        <div class="feast-item">
+          <div class="f-heb">ראש השנה</div>
+          <div class="f-name">Rosh Hashanah</div>
+          <div class="f-date">September 22–24, 2025</div>
+        </div>
+        <div class="feast-item">
+          <div class="f-heb">יום כיפור</div>
+          <div class="f-name">Yom Kippur</div>
+          <div class="f-date">October 1–2, 2025</div>
+        </div>
+        <div class="feast-item">
+          <div class="f-heb">סוכות</div>
+          <div class="f-name">Sukkot (Tabernacles)</div>
+          <div class="f-date">October 6–13, 2025</div>
+        </div>
+        <div class="feast-item">
+          <div class="f-heb">חנוכה</div>
+          <div class="f-name">Hanukkah</div>
+          <div class="f-date">December 14–22, 2025</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" data-aos="fade-up">
+      <div class="section-tag">All Events</div>
+      <h2 class="section-title">All <span class="gold">Upcoming Events</span></h2>
+      <div class="gold-line centered"></div>
+    </div>
+
+    <div class="events-list" id="allEvents">
+      <div style="text-align:center;color:var(--text-muted);padding:60px 0;">
+        <i class="fas fa-spinner fa-spin" style="font-size:2rem;color:var(--gold);"></i>
+        <p style="margin-top:16px;">Loading events...</p>
+      </div>
+    </div>
+
+    <!-- Event Registration Form -->
+    <div class="reg-form-box" data-aos="fade-up" style="margin-top:60px;">
+      <div class="section-header" style="margin-bottom:30px;">
+        <div class="section-tag">Register</div>
+        <h2 class="section-title">Register for an <span class="gold">Event</span></h2>
+        <div class="gold-line centered"></div>
+      </div>
+      <form class="form-stack" id="eventRegForm">
+        <div class="form-row">
+          <div class="fg">
+            <input type="text" name="regname" placeholder="Your Full Name" required>
+          </div>
+          <div class="fg">
+            <input type="email" name="regemail" placeholder="Your Email" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="fg">
+            <input type="tel" name="regphone" placeholder="Phone Number">
+          </div>
+          <div class="fg">
+            <input type="number" name="regguests" placeholder="Number of Guests" min="1" max="10">
+          </div>
+        </div>
+        <div class="fg">
+          <select name="regevent">
+            <option value="" disabled selected>Select Event to Register For</option>
+            <option>Hebrew Roots Conference (Jul 5–6, 2025)</option>
+            <option>Shavuot Celebration (Jun 21, 2025)</option>
+            <option>Rosh Hashanah (Sep 22, 2025)</option>
+            <option>Yom Kippur (Oct 1, 2025)</option>
+            <option>Sukkot (Oct 6, 2025)</option>
+          </select>
+        </div>
+        <div class="fg">
+          <textarea name="regmessage" rows="3" placeholder="Any special requirements or questions?"></textarea>
+        </div>
+        <button type="submit" class="btn btn-gold full-w">
+          <i class="fas fa-calendar-check"></i> Register Now
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<div class="newsletter-sec">
+  <div class="container">
+    <div class="nl-inner" data-aos="fade-up">
+      <h2>Never Miss an <span>Event</span></h2>
+      <p>Subscribe to receive notifications about upcoming events and feast days.</p>
+      <form class="nl-form" id="newsletterForm">
+        <input type="email" placeholder="Enter your email address" required>
+        <button type="submit" class="btn">Subscribe</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="f-logo"><span class="f-star">✡</span><div><span class="f-logo-main">House of Israel</span><span class="f-logo-sub">Assembly</span></div></div>
+        <p class="f-desc">A Hebrew Community dedicated to the pure, unadulterated Word of God through Hebrew lenses.</p>
+        <div class="f-social">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+          <a href="#"><i class="fab fa-whatsapp"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul class="f-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="sermons.html">Sermons</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Service Times</h4>
+        <ul class="f-links">
+          <li><a href="#">Shabbat – Saturday 9AM</a></li>
+          <li><a href="#">Torah Study – Wednesday 6PM</a></li>
+          <li><a href="#">Prayer Night – Friday 7PM</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact Us</h4>
+        <div class="f-contact">
+          <p><i class="fas fa-map-marker-alt"></i> Burma Barracks Chapel, Lusaka</p>
+          <p><i class="fas fa-phone"></i> +260 XXX XXX XXX</p>
+          <p><i class="fas fa-envelope"></i> info@houseofisraelassembly.org</p>
+        </div>
+        <div class="heb-box">
+          <p class="heb-text">שְׁמַע יִשְׂרָאֵל</p>
+          <p class="heb-trans">Shema Yisrael — Hear, O Israel</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 House of Israel Assembly. All Rights Reserved.</p>
+      <p><a href="/admin">Admin Panel</a></p>
+    </div>
+  </div>
+</footer>
+
+<button id="backTop"><i class="fas fa-chevron-up"></i></button>
+<div id="toast"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script src="js/main.js"></script>
+<script>
+  document.getElementById('eventRegForm')?.addEventListener('submit', e => {
+    e.preventDefault();
+    showToast('Registration submitted! We will contact you shortly. Shalom! ✡', 'success');
+    e.target.reset();
+  });
+</script>
+</body>
+</html>

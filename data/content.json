@@ -1,0 +1,87 @@
+{
+  "hero": {
+    "badge": "A Hebrew Community",
+    "title_line1": "House of",
+    "title_line2": "Israel Assembly",
+    "subtitle": "Come and Learn the Pure Unadulterated Word of God Through Hebrew Lenses",
+    "location": "Burma Barracks Chapel",
+    "btn1_text": "Discover More",
+    "btn1_link": "about.html",
+    "btn2_text": "Watch Sermons",
+    "btn2_link": "sermons.html"
+  },
+  "banner": {
+    "item1_icon": "fas fa-synagogue",
+    "item1_text": "Shabbat Service: Saturday 9AM",
+    "item2_icon": "fas fa-book-open",
+    "item2_text": "Torah Study: Wednesday 6PM",
+    "item3_icon": "fas fa-map-marker-alt",
+    "item3_text": "Burma Barracks Chapel"
+  },
+  "about": {
+    "tag": "About Us",
+    "title": "Walking in the Ancient Hebrew Path",
+    "body1": "House of Israel Assembly is a vibrant Hebrew community dedicated to rediscovering the roots of our faith through the original Hebrew lens. We believe in the complete Word of God — unfiltered, unadulterated, and deeply rooted in the ancient traditions of Israel.",
+    "body2": "Under the anointed leadership of Rabbi Dr. Phillip Banda, we journey together through the Torah, the Prophets, and the Writings, uncovering profound truths that transform lives.",
+    "stat1_num": "500",
+    "stat1_label": "Members",
+    "stat2_num": "52",
+    "stat2_label": "Services/Year",
+    "stat3_num": "100",
+    "stat3_label": "Sermons Online",
+    "established": "2024"
+  },
+  "rabbi_quote": {
+    "quote": "The Torah is not just a religious book — it is a living blueprint for righteous living, given to us through the Hebrew people. Come, let us walk this ancient path together.",
+    "author": "Rabbi Dr. Phillip Banda",
+    "title": "Host Rabbi · House of Israel Assembly"
+  },
+  "services": [
+    {
+      "icon": "fas fa-star-of-david",
+      "name": "Shabbat Service",
+      "day": "Every Saturday",
+      "time": "9:00 AM – 12:00 PM",
+      "desc": "Our main weekly Shabbat service featuring prayer, Torah reading, and the Rabbi's teaching.",
+      "featured": false
+    },
+    {
+      "icon": "fas fa-scroll",
+      "name": "Torah Study",
+      "day": "Every Wednesday",
+      "time": "6:00 PM – 8:00 PM",
+      "desc": "Deep dive into the weekly Torah portion with group discussion and Hebrew language study.",
+      "featured": true
+    },
+    {
+      "icon": "fas fa-hands-praying",
+      "name": "Prayer Meeting",
+      "day": "Every Friday",
+      "time": "7:00 PM – 9:00 PM",
+      "desc": "Corporate prayer and intercession as we usher in the Shabbat together as a community.",
+      "featured": false
+    },
+    {
+      "icon": "fas fa-children",
+      "name": "Youth Program",
+      "day": "Saturdays",
+      "time": "9:00 AM – 12:00 PM",
+      "desc": "Hebrew education and Torah teachings specially designed for our young ones and teenagers.",
+      "featured": false
+    }
+  ],
+  "contact": {
+    "address": "Burma Barracks Chapel, Lusaka, Zambia",
+    "phone": "+260 XXX XXX XXX",
+    "email": "info@houseofisraelassembly.org",
+    "facebook": "#",
+    "youtube": "#",
+    "whatsapp": "#",
+    "instagram": "#"
+  },
+  "site": {
+    "name": "House of Israel Assembly",
+    "tagline": "A Hebrew Community",
+    "logo_symbol": "✡"
+  }
+}

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery | House of Israel Assembly</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Lato:ital,wght@0,300;0,400;0,700;1,300&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .gallery-full {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 14px;
+    }
+    .gallery-full .gal-item { height: 260px; }
+    .gallery-full .gal-item.wide { grid-column: span 2; }
+    .gallery-full .gal-item.tall { height: 400px; }
+    .gal-filter {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 40px;
+    }
+    .gal-filter-btn {
+      padding: 8px 22px;
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .gal-filter-btn:hover, .gal-filter-btn.active {
+      background: var(--gold); color: var(--dark); border-color: var(--gold);
+    }
+    @media (max-width: 768px) {
+      .gallery-full { grid-template-columns: repeat(2,1fr); }
+      .gallery-full .gal-item.wide { grid-column: span 1; }
+    }
+    @media (max-width: 480px) {
+      .gallery-full { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+<canvas id="particles"></canvas>
+
+<nav class="navbar" id="navbar">
+  <div class="nav-wrap">
+    <a href="index.html" class="nav-logo">
+      <span class="logo-star">✡</span>
+      <div class="logo-text">
+        <span class="logo-main">House of Israel</span>
+        <span class="logo-sub">Assembly</span>
+      </div>
+    </a>
+    <div class="nav-menu" id="navMenu">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="about.html" class="nav-link">About</a>
+      <a href="sermons.html" class="nav-link">Sermons</a>
+      <a href="events.html" class="nav-link">Events</a>
+      <a href="gallery.html" class="nav-link active">Gallery</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+      <a href="give.html" class="nav-link give-link">Give ✡</a>
+    </div>
+    <div class="nav-toggle" id="navToggle"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a>
+      <i class="fas fa-chevron-right" style="font-size:0.6rem"></i>
+      <span style="color:var(--gold)">Gallery</span>
+    </div>
+    <div class="section-tag">Media</div>
+    <h1>Our <span class="gold">Gallery</span></h1>
+    <p>Moments from our Hebrew community</p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+    <div class="section-header" data-aos="fade-up">
+      <div class="section-tag">Photos</div>
+      <h2 class="section-title">Community <span class="gold">Moments</span></h2>
+      <div class="gold-line centered"></div>
+    </div>
+
+    <div class="gal-filter" data-aos="fade-up">
+      <button class="gal-filter-btn active" data-gcat="all">All Photos</button>
+      <button class="gal-filter-btn" data-gcat="Service">Services</button>
+      <button class="gal-filter-btn" data-gcat="Study">Torah Study</button>
+      <button class="gal-filter-btn" data-gcat="Events">Events</button>
+      <button class="gal-filter-btn" data-gcat="Community">Community</button>
+      <button class="gal-filter-btn" data-gcat="Youth">Youth</button>
+    </div>
+
+    <div class="gallery-full" id="galleryFull">
+      <!-- Static placeholders until images are uploaded -->
+      <div class="gal-item wide" data-cat="Service" data-aos="fade-up">
+        <div class="gal-ph"><i class="fas fa-image"></i><span>Shabbat Service</span></div>
+        <div class="gal-overlay"><i class="fas fa-expand"></i><span>Shabbat Service</span></div>
+      </div>
+      <div class="gal-item" data-cat="Study" data-aos="fade-up" data-aos-delay="50">
+        <div class="gal-ph"><i class="fas fa-image"></i><span>Torah Study</span></div>
+        <div class="gal-overlay"><i class="fas fa-expand"></i><span>Torah Study</span></div>
+      </div>
+      <div class="gal-item" data-cat="Community" data-aos="fade-up" data-aos-delay="100">
+        <div class="gal-ph"><i class="fas fa-image"></i><span>Community Fellowship</span></div>
+        <div class="gal-overlay"><i class="fas fa-expand"></i><span>Community Fellowship</span></div>
+      </div>
+      <div class="gal-item tall" data-cat="Events" data-aos="fade-up" data-aos-delay="150">
+        <div class="gal-ph"><i class="fas fa-image"></i><span>Feast Day</span></div>
+        <div class="gal-overlay"><i class="fas fa-expand"></i><span>Feast Day Celebration</span></div>
+      </div>
+      <div class="gal-item" data-cat="Youth" data-aos="fade-up" data-aos-delay="200">
+        <div class="gal-ph"><i class="fas fa-image"></i><span>Youth Program</span></div>
+        <div class="gal-overlay"><i class="fas fa-expand"></i><span>Youth Program</span></div>
+      </div>
+      <div class="gal-item" data-cat="Service" data-aos="fade-up" data-aos-delay="250">
+        <div class="gal-ph"><i class="fas fa-image"></i><span>Prayer Meeting</span></div>
+        <div class="gal-overlay"><i class="fas fa-expand"></i><span>Prayer Meeting</span></div>
+      </div>
+      <div class="gal-item" data-cat="Community" data-aos="fade-up" data-aos-delay="300">
+        <div class="gal-ph"><i class="fas fa-image"></i><span>Community Meal</span></div>
+        <div class="gal-overlay"><i class="fas fa-expand"></i><span>Community Meal</span></div>
+      </div>
+      <div class="gal-item" data-cat="Study" data-aos="fade-up" data-aos-delay="350">
+        <div class="gal-ph"><i class="fas fa-image"></i><span>Hebrew Class</span></div>
+        <div class="gal-overlay"><i class="fas fa-expand"></i><span>Hebrew Language Class</span></div>
+      </div>
+    </div>
+
+    <div class="text-center" style="margin-top:30px;color:var(--text-muted);font-size:0.9rem;" data-aos="fade-up">
+      <i class="fas fa-info-circle" style="color:var(--gold)"></i>
+      Images can be uploaded through the <a href="/admin" style="color:var(--gold);">Admin Panel</a>
+    </div>
+  </div>
+</section>
+
+<div class="newsletter-sec">
+  <div class="container">
+    <div class="nl-inner" data-aos="fade-up">
+      <h2>Stay Connected with <span>Our Community</span></h2>
+      <p>Subscribe for updates, new photos, and event announcements.</p>
+      <form class="nl-form" id="newsletterForm">
+        <input type="email" placeholder="Enter your email address" required>
+        <button type="submit" class="btn">Subscribe</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="f-logo"><span class="f-star">✡</span><div><span class="f-logo-main">House of Israel</span><span class="f-logo-sub">Assembly</span></div></div>
+        <p class="f-desc">A Hebrew Community dedicated to the pure, unadulterated Word of God through Hebrew lenses.</p>
+        <div class="f-social">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+          <a href="#"><i class="fab fa-whatsapp"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul class="f-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="sermons.html">Sermons</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Service Times</h4>
+        <ul class="f-links">
+          <li><a href="#">Shabbat – Saturday 9AM</a></li>
+          <li><a href="#">Torah Study – Wednesday 6PM</a></li>
+          <li><a href="#">Prayer Night – Friday 7PM</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact Us</h4>
+        <div class="f-contact">
+          <p><i class="fas fa-map-marker-alt"></i> Burma Barracks Chapel, Lusaka</p>
+          <p><i class="fas fa-phone"></i> +260 XXX XXX XXX</p>
+          <p><i class="fas fa-envelope"></i> info@houseofisraelassembly.org</p>
+        </div>
+        <div class="heb-box">
+          <p class="heb-text">שְׁמַע יִשְׂרָאֵל</p>
+          <p class="heb-trans">Shema Yisrael — Hear, O Israel</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 House of Israel Assembly. All Rights Reserved.</p>
+      <p><a href="/admin">Admin Panel</a></p>
+    </div>
+  </div>
+</footer>
+
+<button id="backTop"><i class="fas fa-chevron-up"></i></button>
+<div id="toast"></div>
+<div class="lightbox" id="lightbox">
+  <button class="lb-close">&times;</button>
+  <img class="lb-img" src="" alt="">
+  <div class="lb-cap"></div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script src="js/main.js"></script>
+<script>
+  // Gallery filter
+  document.querySelectorAll('.gal-filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.gal-filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const cat = btn.dataset.gcat;
+      document.querySelectorAll('#galleryFull .gal-item').forEach(item => {
+        item.style.display = (cat === 'all' || item.dataset.cat === cat) ? '' : 'none';
+      });
+    });
+  });
+
+  // Simple lightbox for static items (no src)
+  document.querySelectorAll('#galleryFull .gal-item').forEach(item => {
+    item.addEventListener('click', () => {
+      const cap = item.querySelector('.gal-overlay span')?.textContent || '';
+      const lb = document.getElementById('lightbox');
+      const lbCap = lb.querySelector('.lb-cap');
+      const lbImg = lb.querySelector('.lb-img');
+      lbImg.src = '';
+      lbImg.style.display = 'none';
+      if (lbCap) lbCap.textContent = cap + ' — Upload images via Admin Panel';
+      lb.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+[
+  {
+    "id": 1,
+    "title": "The Covenant of Abraham: Understanding Our Hebrew Roots",
+    "category": "Torah Portion",
+    "date": "2025-06-07",
+    "speaker": "Rabbi Dr. Phillip Banda",
+    "duration": "58 min",
+    "description": "In this powerful teaching, Rabbi Dr. Phillip Banda takes us deep into the Abrahamic covenant and what it means for us as a Hebrew community today. We explore the original Hebrew text and uncover truths that have been hidden from the modern church.",
+    "youtube_link": "",
+    "audio_link": "",
+    "featured": true,
+    "views": 245
+  },
+  {
+    "id": 2,
+    "title": "Shabbat: The Fourth Commandment and Its Significance",
+    "category": "Shabbat Teaching",
+    "date": "2025-05-31",
+    "speaker": "Rabbi Dr. Phillip Banda",
+    "duration": "72 min",
+    "description": "Why does the fourth commandment matter? Rabbi Banda unpacks the biblical and Hebrew significance of Shabbat and why keeping it holy is still relevant for believers today.",
+    "youtube_link": "",
+    "audio_link": "",
+    "featured": false,
+    "views": 189
+  },
+  {
+    "id": 3,
+    "title": "Walking in Torah: Living the Hebrew Way in the Modern World",
+    "category": "Special Teaching",
+    "date": "2025-05-24",
+    "speaker": "Rabbi Dr. Phillip Banda",
+    "duration": "65 min",
+    "description": "How do we apply ancient Torah principles to our modern lives? This teaching bridges the gap between ancient Hebrew wisdom and contemporary living.",
+    "youtube_link": "",
+    "audio_link": "",
+    "featured": false,
+    "views": 312
+  },
+  {
+    "id": 4,
+    "title": "The Feasts of the LORD: Understanding the Biblical Moedim",
+    "category": "Special Teaching",
+    "date": "2025-05-17",
+    "speaker": "Rabbi Dr. Phillip Banda",
+    "duration": "80 min",
+    "description": "A comprehensive study of the seven feasts of the LORD as given in Leviticus 23, exploring their prophetic significance and how to observe them today.",
+    "youtube_link": "",
+    "audio_link": "",
+    "featured": false,
+    "views": 278
+  },
+  {
+    "id": 5,
+    "title": "Shema Yisrael: The Foundational Confession of the Hebrew Faith",
+    "category": "Torah Portion",
+    "date": "2025-05-10",
+    "speaker": "Rabbi Dr. Phillip Banda",
+    "duration": "55 min",
+    "description": "Exploring the Shema — Deuteronomy 6:4 — the cornerstone of Hebrew faith, its Hebrew meaning, and its profound implications for believers.",
+    "youtube_link": "",
+    "audio_link": "",
+    "featured": false,
+    "views": 198
+  },
+  {
+    "id": 6,
+    "title": "The Menorah: Hidden Mysteries of the Seven Lamps",
+    "category": "Torah Portion",
+    "date": "2025-05-03",
+    "speaker": "Rabbi Dr. Phillip Banda",
+    "duration": "68 min",
+    "description": "An in-depth exploration of the Menorah, its design, symbolism, and what the seven lamps represent in both the physical Tabernacle and our spiritual walk.",
+    "youtube_link": "",
+    "audio_link": "",
+    "featured": false,
+    "views": 156
+  }
+]

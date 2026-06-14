@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sermons | House of Israel Assembly</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Lato:ital,wght@0,300;0,400;0,700;1,300&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .filter-bar {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+      justify-content: center;
+    }
+    .filter-btn {
+      padding: 8px 22px;
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .filter-btn:hover, .filter-btn.active {
+      background: var(--gold);
+      color: var(--dark);
+      border-color: var(--gold);
+    }
+    .search-bar {
+      max-width: 500px;
+      margin: 0 auto 30px;
+      position: relative;
+    }
+    .search-bar input {
+      width: 100%;
+      background: var(--dark-2);
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      color: var(--white);
+      font-family: var(--font-b);
+      font-size: 0.9rem;
+      padding: 12px 50px 12px 22px;
+      outline: none;
+      transition: var(--transition);
+    }
+    .search-bar input:focus { border-color: var(--gold); }
+    .search-bar input::placeholder { color: var(--text-muted); }
+    .search-bar i {
+      position: absolute;
+      right: 18px; top: 50%;
+      transform: translateY(-50%);
+      color: var(--gold);
+    }
+    #allSermons { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+    @media (max-width: 900px) { #allSermons { grid-template-columns: repeat(2,1fr); } }
+    @media (max-width: 600px) { #allSermons { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+<canvas id="particles"></canvas>
+
+<nav class="navbar" id="navbar">
+  <div class="nav-wrap">
+    <a href="index.html" class="nav-logo">
+      <span class="logo-star">✡</span>
+      <div class="logo-text">
+        <span class="logo-main">House of Israel</span>
+        <span class="logo-sub">Assembly</span>
+      </div>
+    </a>
+    <div class="nav-menu" id="navMenu">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="about.html" class="nav-link">About</a>
+      <a href="sermons.html" class="nav-link active">Sermons</a>
+      <a href="events.html" class="nav-link">Events</a>
+      <a href="gallery.html" class="nav-link">Gallery</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+      <a href="give.html" class="nav-link give-link">Give ✡</a>
+    </div>
+    <div class="nav-toggle" id="navToggle"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a>
+      <i class="fas fa-chevron-right" style="font-size:0.6rem"></i>
+      <span style="color:var(--gold)">Sermons</span>
+    </div>
+    <div class="section-tag">The Word</div>
+    <h1>Sermons &amp; <span class="gold">Teachings</span></h1>
+    <p>Powerful Torah-based teachings from Rabbi Dr. Phillip Banda</p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+    <div class="section-header" data-aos="fade-up">
+      <div class="section-tag">All Teachings</div>
+      <h2 class="section-title">Browse Our <span class="gold">Sermon Library</span></h2>
+      <div class="gold-line centered"></div>
+    </div>
+
+    <div class="search-bar" data-aos="fade-up">
+      <input type="text" id="sermonSearch" placeholder="Search sermons...">
+      <i class="fas fa-search"></i>
+    </div>
+
+    <div class="filter-bar" data-aos="fade-up">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="Torah Portion">Torah Portion</button>
+      <button class="filter-btn" data-filter="Shabbat Teaching">Shabbat Teaching</button>
+      <button class="filter-btn" data-filter="Special Teaching">Special Teaching</button>
+    </div>
+
+    <div id="allSermons">
+      <!-- Loaded dynamically by main.js -->
+      <div style="text-align:center;color:var(--text-muted);padding:60px 0;grid-column:1/-1;">
+        <i class="fas fa-spinner fa-spin" style="font-size:2rem;color:var(--gold);"></i>
+        <p style="margin-top:16px;">Loading sermons...</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="newsletter-sec">
+  <div class="container">
+    <div class="nl-inner" data-aos="fade-up">
+      <h2>Get Notified of <span>New Sermons</span></h2>
+      <p>Subscribe to receive email notifications when new teachings are posted.</p>
+      <form class="nl-form" id="newsletterForm">
+        <input type="email" placeholder="Enter your email address" required>
+        <button type="submit" class="btn">Subscribe</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="f-logo">
+          <span class="f-star">✡</span>
+          <div><span class="f-logo-main">House of Israel</span><span class="f-logo-sub">Assembly</span></div>
+        </div>
+        <p class="f-desc">A Hebrew Community dedicated to the pure, unadulterated Word of God through Hebrew lenses.</p>
+        <div class="f-social">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+          <a href="#"><i class="fab fa-whatsapp"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul class="f-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="sermons.html">Sermons</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Categories</h4>
+        <ul class="f-links">
+          <li><a href="#">Torah Portion</a></li>
+          <li><a href="#">Shabbat Teaching</a></li>
+          <li><a href="#">Feast Day Teaching</a></li>
+          <li><a href="#">Special Teaching</a></li>
+          <li><a href="#">Hebrew Language</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact Us</h4>
+        <div class="f-contact">
+          <p><i class="fas fa-map-marker-alt"></i> Burma Barracks Chapel, Lusaka</p>
+          <p><i class="fas fa-phone"></i> +260 XXX XXX XXX</p>
+          <p><i class="fas fa-envelope"></i> info@houseofisraelassembly.org</p>
+        </div>
+        <div class="heb-box">
+          <p class="heb-text">שְׁמַע יִשְׂרָאֵל</p>
+          <p class="heb-trans">Shema Yisrael — Hear, O Israel</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 House of Israel Assembly. All Rights Reserved.</p>
+      <p><a href="/admin">Admin Panel</a></p>
+    </div>
+  </div>
+</footer>
+
+<button id="backTop"><i class="fas fa-chevron-up"></i></button>
+<div id="toast"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script src="js/main.js"></script>
+<script>
+  // Search and filter
+  let allSermonsData = [];
+
+  document.addEventListener('DOMContentLoaded', async () => {
+    try {
+      const res = await fetch('/api/sermons');
+      allSermonsData = await res.json();
+      renderSermons(allSermonsData);
+    } catch {}
+
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+        const filtered = filter === 'all' ? allSermonsData : allSermonsData.filter(s => s.category === filter);
+        renderSermons(filtered);
+      });
+    });
+
+    document.getElementById('sermonSearch')?.addEventListener('input', e => {
+      const q = e.target.value.toLowerCase();
+      const filtered = allSermonsData.filter(s =>
+        s.title.toLowerCase().includes(q) ||
+        s.speaker.toLowerCase().includes(q) ||
+        (s.description || '').toLowerCase().includes(q)
+      );
+      renderSermons(filtered);
+    });
+  });
+
+  function renderSermons(sermons) {
+    const container = document.getElementById('allSermons');
+    if (!sermons.length) {
+      container.innerHTML = '<div style="text-align:center;color:var(--text-muted);padding:60px 0;grid-column:1/-1;"><i class="fas fa-search" style="font-size:2rem;color:var(--gold);opacity:0.4;"></i><p style="margin-top:16px;">No sermons found.</p></div>';
+      return;
+    }
+    container.innerHTML = sermons.map(s => buildCard(s)).join('');
+  }
+
+  function buildCard(s) {
+    const d = new Date(s.date);
+    const dateStr = d.toLocaleDateString('en-US', { year:'numeric', month:'long', day:'numeric' });
+    return `
+      <div class="sermon-card">
+        <div class="scard-thumb">
+          ${s.youtube_link ? `<a href="${s.youtube_link}" target="_blank" class="play-btn"><i class="fas fa-play"></i></a>` : '<div class="play-btn"><i class="fas fa-play"></i></div>'}
+          <div class="scard-cat">${s.category}</div>
+        </div>
+        <div class="scard-body">
+          <div class="scard-date"><i class="fas fa-calendar-alt"></i> ${dateStr}</div>
+          <h3>${s.title}</h3>
+          <p class="scard-speaker">${s.speaker}</p>
+          <p style="font-size:0.83rem;color:var(--text-muted);line-height:1.6;margin-bottom:16px;">${(s.description||'').substring(0,100)}...</p>
+          <div class="scard-foot">
+            ${s.youtube_link ? `<a href="${s.youtube_link}" target="_blank" class="btn-sm">Watch on YouTube</a>` : '<span class="btn-sm" style="opacity:0.5;cursor:default;">Coming Soon</span>'}
+            <span class="scard-dur"><i class="fas fa-clock"></i> ${s.duration}</span>
+          </div>
+        </div>
+      </div>`;
+  }
+</script>
+</body>
+</html>

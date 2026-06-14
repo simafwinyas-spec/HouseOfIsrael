@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard | House of Israel Assembly</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<aside class="sidebar" id="sidebar">
+  <div class="sb-logo">
+    <span class="sb-star">✡</span>
+    <div>
+      <span class="sb-name">House of Israel</span>
+      <span class="sb-role">Admin Panel</span>
+    </div>
+  </div>
+  <nav class="sb-nav">
+    <a href="#" class="sb-link active" data-section="dashboard">
+      <i class="fas fa-tachometer-alt"></i><span>Dashboard</span>
+    </a>
+    <a href="#" class="sb-link" data-section="home-content">
+      <i class="fas fa-home"></i><span>Edit Homepage</span>
+    </a>
+    <a href="#" class="sb-link" data-section="sermons">
+      <i class="fas fa-scroll"></i><span>Manage Sermons</span>
+    </a>
+    <a href="#" class="sb-link" data-section="events">
+      <i class="fas fa-calendar-alt"></i><span>Manage Events</span>
+    </a>
+    <a href="#" class="sb-link" data-section="gallery">
+      <i class="fas fa-images"></i><span>Manage Gallery</span>
+    </a>
+    <a href="#" class="sb-link" data-section="prayers">
+      <i class="fas fa-hands-praying"></i><span>Prayer Requests</span>
+    </a>
+    <a href="#" class="sb-link" data-section="newsletter">
+      <i class="fas fa-envelope"></i><span>Newsletter</span>
+    </a>
+    <a href="#" class="sb-link" data-section="settings">
+      <i class="fas fa-cog"></i><span>Settings</span>
+    </a>
+    <div class="sb-divider"></div>
+    <a href="/" class="sb-link" target="_blank">
+      <i class="fas fa-external-link-alt"></i><span>View Website</span>
+    </a>
+    <a href="#" class="sb-link sb-logout" id="logoutBtn">
+      <i class="fas fa-sign-out-alt"></i><span>Logout</span>
+    </a>
+  </nav>
+</aside>
+
+<!-- MAIN CONTENT -->
+<div class="main" id="main">
+  <!-- TOP BAR -->
+  <header class="topbar">
+    <button class="sidebar-toggle" id="sidebarToggle">
+      <i class="fas fa-bars"></i>
+    </button>
+    <div class="topbar-title" id="pageTitle">Dashboard</div>
+    <div class="topbar-right">
+      <div class="topbar-time" id="topbarTime"></div>
+      <div class="admin-badge">
+        <i class="fas fa-user-circle"></i>
+        <span id="adminName">Admin</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- CONTENT AREA -->
+  <div class="content-area">
+
+    <!-- ====== DASHBOARD ====== -->
+    <section class="panel" id="panel-dashboard">
+      <div class="panel-header">
+        <h2><i class="fas fa-tachometer-alt"></i> Dashboard Overview</h2>
+        <p>Welcome back, <strong id="dashAdminName">Admin</strong>! Here's what's happening at House of Israel Assembly.</p>
+      </div>
+      <div class="stats-grid" id="statsGrid">
+        <div class="stat-card">
+          <div class="sc-icon sermons"><i class="fas fa-scroll"></i></div>
+          <div class="sc-info">
+            <div class="sc-num" id="statSermons">–</div>
+            <div class="sc-label">Total Sermons</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="sc-icon events"><i class="fas fa-calendar-alt"></i></div>
+          <div class="sc-info">
+            <div class="sc-num" id="statEvents">–</div>
+            <div class="sc-label">Events</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="sc-icon prayers"><i class="fas fa-hands-praying"></i></div>
+          <div class="sc-info">
+            <div class="sc-num" id="statPrayers">–</div>
+            <div class="sc-label">Prayer Requests</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="sc-icon subscribers"><i class="fas fa-envelope"></i></div>
+          <div class="sc-info">
+            <div class="sc-num" id="statSubscribers">–</div>
+            <div class="sc-label">Subscribers</div>
+          </div>
+        </div>
+      </div>
+      <div class="quick-actions">
+        <h3>Quick Actions</h3>
+        <div class="qa-grid">
+          <button class="qa-btn" onclick="switchSection('sermons')"><i class="fas fa-plus"></i> Add Sermon</button>
+          <button class="qa-btn" onclick="switchSection('events')"><i class="fas fa-plus"></i> Add Event</button>
+          <button class="qa-btn" onclick="switchSection('gallery')"><i class="fas fa-upload"></i> Upload Image</button>
+          <button class="qa-btn" onclick="switchSection('prayers')"><i class="fas fa-hands-praying"></i> View Prayers</button>
+          <button class="qa-btn" onclick="switchSection('home-content')"><i class="fas fa-edit"></i> Edit Homepage</button>
+          <button class="qa-btn" onclick="switchSection('newsletter')"><i class="fas fa-envelope"></i> View Subscribers</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== HOME CONTENT EDITOR ====== -->
+    <section class="panel hidden" id="panel-home-content">
+      <div class="panel-header">
+        <h2><i class="fas fa-home"></i> Edit Homepage Content</h2>
+        <p>Update the text and content displayed on your homepage.</p>
+      </div>
+      <form id="contentForm">
+        <div class="form-section">
+          <h3>Hero Section</h3>
+          <div class="admin-form-grid">
+            <div class="admin-fg">
+              <label>Badge Text</label>
+              <input type="text" name="hero_badge" id="hero_badge" placeholder="A Hebrew Community">
+            </div>
+            <div class="admin-fg">
+              <label>Title Line 1</label>
+              <input type="text" name="hero_title1" id="hero_title1" placeholder="House of">
+            </div>
+            <div class="admin-fg">
+              <label>Title Line 2 (Gold)</label>
+              <input type="text" name="hero_title2" id="hero_title2" placeholder="Israel Assembly">
+            </div>
+            <div class="admin-fg full">
+              <label>Subtitle / Tagline</label>
+              <textarea name="hero_subtitle" id="hero_subtitle" rows="2"></textarea>
+            </div>
+            <div class="admin-fg">
+              <label>Location Text</label>
+              <input type="text" name="hero_location" id="hero_location" placeholder="Burma Barracks Chapel">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h3>About Section</h3>
+          <div class="admin-form-grid">
+            <div class="admin-fg full">
+              <label>About Paragraph 1</label>
+              <textarea name="about_body1" id="about_body1" rows="4"></textarea>
+            </div>
+            <div class="admin-fg full">
+              <label>About Paragraph 2</label>
+              <textarea name="about_body2" id="about_body2" rows="4"></textarea>
+            </div>
+            <div class="admin-fg">
+              <label>Members Count</label>
+              <input type="text" name="stat1_num" id="stat1_num" placeholder="500">
+            </div>
+            <div class="admin-fg">
+              <label>Services Per Year</label>
+              <input type="text" name="stat2_num" id="stat2_num" placeholder="52">
+            </div>
+            <div class="admin-fg">
+              <label>Sermons Online</label>
+              <input type="text" name="stat3_num" id="stat3_num" placeholder="100">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h3>Rabbi Quote</h3>
+          <div class="admin-form-grid">
+            <div class="admin-fg full">
+              <label>Quote Text</label>
+              <textarea name="rabbi_quote" id="rabbi_quote" rows="4"></textarea>
+            </div>
+            <div class="admin-fg">
+              <label>Author Name</label>
+              <input type="text" name="rabbi_author" id="rabbi_author" placeholder="Rabbi Dr. Phillip Banda">
+            </div>
+            <div class="admin-fg">
+              <label>Author Title</label>
+              <input type="text" name="rabbi_title" id="rabbi_title" placeholder="Host Rabbi">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h3>Contact Information</h3>
+          <div class="admin-form-grid">
+            <div class="admin-fg">
+              <label>Address</label>
+              <input type="text" name="contact_address" id="contact_address">
+            </div>
+            <div class="admin-fg">
+              <label>Phone</label>
+              <input type="text" name="contact_phone" id="contact_phone">
+            </div>
+            <div class="admin-fg">
+              <label>Email</label>
+              <input type="email" name="contact_email" id="contact_email">
+            </div>
+            <div class="admin-fg">
+              <label>Facebook URL</label>
+              <input type="text" name="contact_facebook" id="contact_facebook">
+            </div>
+            <div class="admin-fg">
+              <label>YouTube URL</label>
+              <input type="text" name="contact_youtube" id="contact_youtube">
+            </div>
+            <div class="admin-fg">
+              <label>WhatsApp URL/Number</label>
+              <input type="text" name="contact_whatsapp" id="contact_whatsapp">
+            </div>
+            <div class="admin-fg">
+              <label>Instagram URL</label>
+              <input type="text" name="contact_instagram" id="contact_instagram">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="admin-btn primary"><i class="fas fa-save"></i> Save All Changes</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- ====== SERMONS ====== -->
+    <section class="panel hidden" id="panel-sermons">
+      <div class="panel-header">
+        <h2><i class="fas fa-scroll"></i> Manage Sermons</h2>
+        <button class="admin-btn primary" onclick="openSermonModal()">
+          <i class="fas fa-plus"></i> Add New Sermon
+        </button>
+      </div>
+      <div id="sermonsList" class="data-list">
+        <div class="loading-ph"><i class="fas fa-spinner fa-spin"></i> Loading sermons...</div>
+      </div>
+    </section>
+
+    <!-- ====== EVENTS ====== -->
+    <section class="panel hidden" id="panel-events">
+      <div class="panel-header">
+        <h2><i class="fas fa-calendar-alt"></i> Manage Events</h2>
+        <button class="admin-btn primary" onclick="openEventModal()">
+          <i class="fas fa-plus"></i> Add New Event
+        </button>
+      </div>
+      <div id="eventsList" class="data-list">
+        <div class="loading-ph"><i class="fas fa-spinner fa-spin"></i> Loading events...</div>
+      </div>
+    </section>
+
+    <!-- ====== GALLERY ====== -->
+    <section class="panel hidden" id="panel-gallery">
+      <div class="panel-header">
+        <h2><i class="fas fa-images"></i> Manage Gallery</h2>
+      </div>
+      <div class="upload-zone" id="uploadZone">
+        <form id="uploadForm" enctype="multipart/form-data">
+          <i class="fas fa-cloud-upload-alt" style="font-size:3rem;color:var(--gold);margin-bottom:16px;"></i>
+          <h3>Upload Images</h3>
+          <p>Click to select images or drag & drop</p>
+          <input type="file" id="imageFile" name="image" accept="image/*" style="display:none">
+          <button type="button" onclick="document.getElementById('imageFile').click()" class="admin-btn primary" style="margin-top:14px;">
+            <i class="fas fa-folder-open"></i> Select Image
+          </button>
+          <div id="uploadPreview" style="margin-top:16px;display:none;">
+            <img id="previewImg" src="" style="max-width:200px;border-radius:6px;border:1px solid var(--border);margin-bottom:14px;">
+            <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+              <input type="text" name="caption" id="imgCaption" placeholder="Image caption" class="admin-input" style="width:200px;">
+              <input type="text" name="category" id="imgCategory" placeholder="Category (e.g. Service)" class="admin-input" style="width:160px;">
+              <label style="display:flex;align-items:center;gap:6px;font-size:0.85rem;color:rgba(255,255,255,0.6);">
+                <input type="checkbox" name="featured" id="imgFeatured"> Featured (large)
+              </label>
+            </div>
+            <button type="button" onclick="uploadImage()" class="admin-btn primary" style="margin-top:14px;">
+              <i class="fas fa-upload"></i> Upload
+            </button>
+          </div>
+        </form>
+      </div>
+      <div id="galleryList" class="gallery-admin-grid"></div>
+    </section>
+
+    <!-- ====== PRAYER REQUESTS ====== -->
+    <section class="panel hidden" id="panel-prayers">
+      <div class="panel-header">
+        <h2><i class="fas fa-hands-praying"></i> Prayer Requests</h2>
+      </div>
+      <div id="prayersList" class="data-list">
+        <div class="loading-ph"><i class="fas fa-spinner fa-spin"></i> Loading prayer requests...</div>
+      </div>
+    </section>
+
+    <!-- ====== NEWSLETTER ====== -->
+    <section class="panel hidden" id="panel-newsletter">
+      <div class="panel-header">
+        <h2><i class="fas fa-envelope"></i> Newsletter Subscribers</h2>
+      </div>
+      <div id="newsletterList" class="data-list">
+        <div class="loading-ph"><i class="fas fa-spinner fa-spin"></i> Loading subscribers...</div>
+      </div>
+    </section>
+
+    <!-- ====== SETTINGS ====== -->
+    <section class="panel hidden" id="panel-settings">
+      <div class="panel-header">
+        <h2><i class="fas fa-cog"></i> Settings</h2>
+      </div>
+      <div class="settings-grid">
+        <div class="settings-card">
+          <h3><i class="fas fa-lock"></i> Change Password</h3>
+          <form class="admin-form-stack" id="changePwForm">
+            <div class="admin-fg">
+              <label>Current Password</label>
+              <input type="password" name="currentPassword" placeholder="Current password" required>
+            </div>
+            <div class="admin-fg">
+              <label>New Password</label>
+              <input type="password" name="newPassword" placeholder="New password" required minlength="6">
+            </div>
+            <div class="admin-fg">
+              <label>Confirm New Password</label>
+              <input type="password" name="confirmPassword" placeholder="Confirm new password" required>
+            </div>
+            <button type="submit" class="admin-btn primary">
+              <i class="fas fa-key"></i> Update Password
+            </button>
+          </form>
+        </div>
+        <div class="settings-card">
+          <h3><i class="fas fa-info-circle"></i> System Information</h3>
+          <div class="info-list">
+            <div class="info-row"><span>Website</span><strong>House of Israel Assembly</strong></div>
+            <div class="info-row"><span>Location</span><strong>Burma Barracks Chapel, Lusaka</strong></div>
+            <div class="info-row"><span>Rabbi</span><strong>Dr. Phillip Banda</strong></div>
+            <div class="info-row"><span>Server</span><strong>Node.js + Express</strong></div>
+            <div class="info-row"><span>Version</span><strong>1.0.0</strong></div>
+          </div>
+          <a href="/" target="_blank" class="admin-btn secondary" style="margin-top:20px;display:inline-flex;">
+            <i class="fas fa-external-link-alt"></i> View Live Website
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- end content-area -->
+</div><!-- end main -->
+
+<!-- SERMON MODAL -->
+<div class="modal" id="sermonModal">
+  <div class="modal-box">
+    <div class="modal-head">
+      <h3 id="sermonModalTitle">Add New Sermon</h3>
+      <button class="modal-close" onclick="closeModal('sermonModal')">&times;</button>
+    </div>
+    <form class="admin-form-stack" id="sermonForm">
+      <input type="hidden" id="sermonId">
+      <div class="admin-form-grid">
+        <div class="admin-fg full">
+          <label>Sermon Title *</label>
+          <input type="text" id="sTitle" placeholder="Enter sermon title" required>
+        </div>
+        <div class="admin-fg">
+          <label>Category</label>
+          <select id="sCategory">
+            <option>Torah Portion</option>
+            <option>Shabbat Teaching</option>
+            <option>Special Teaching</option>
+            <option>Feast Day Teaching</option>
+            <option>Hebrew Language</option>
+          </select>
+        </div>
+        <div class="admin-fg">
+          <label>Date *</label>
+          <input type="date" id="sDate" required>
+        </div>
+        <div class="admin-fg">
+          <label>Speaker</label>
+          <input type="text" id="sSpeaker" value="Rabbi Dr. Phillip Banda">
+        </div>
+        <div class="admin-fg">
+          <label>Duration (e.g. 58 min)</label>
+          <input type="text" id="sDuration" placeholder="58 min">
+        </div>
+        <div class="admin-fg full">
+          <label>YouTube Link</label>
+          <input type="url" id="sYoutube" placeholder="https://youtube.com/watch?v=...">
+        </div>
+        <div class="admin-fg full">
+          <label>Description</label>
+          <textarea id="sDesc" rows="4" placeholder="Brief description of this teaching..."></textarea>
+        </div>
+        <div class="admin-fg">
+          <label style="display:flex;align-items:center;gap:8px;">
+            <input type="checkbox" id="sFeatured"> Featured Sermon
+          </label>
+        </div>
+      </div>
+      <div class="modal-actions">
+        <button type="button" class="admin-btn secondary" onclick="closeModal('sermonModal')">Cancel</button>
+        <button type="submit" class="admin-btn primary"><i class="fas fa-save"></i> Save Sermon</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- EVENT MODAL -->
+<div class="modal" id="eventModal">
+  <div class="modal-box">
+    <div class="modal-head">
+      <h3 id="eventModalTitle">Add New Event</h3>
+      <button class="modal-close" onclick="closeModal('eventModal')">&times;</button>
+    </div>
+    <form class="admin-form-stack" id="eventForm">
+      <input type="hidden" id="eventId">
+      <div class="admin-form-grid">
+        <div class="admin-fg full">
+          <label>Event Title *</label>
+          <input type="text" id="eTitle" placeholder="Event name" required>
+        </div>
+        <div class="admin-fg">
+          <label>Date *</label>
+          <input type="date" id="eDate" required>
+        </div>
+        <div class="admin-fg">
+          <label>Time</label>
+          <input type="text" id="eTime" placeholder="9:00 AM">
+        </div>
+        <div class="admin-fg">
+          <label>Location</label>
+          <input type="text" id="eLocation" value="Burma Barracks Chapel">
+        </div>
+        <div class="admin-fg">
+          <label>Category</label>
+          <select id="eCategory">
+            <option>Feast Day</option>
+            <option>Conference</option>
+            <option>Workshop</option>
+            <option>Youth Event</option>
+            <option>Community</option>
+            <option>Special Service</option>
+          </select>
+        </div>
+        <div class="admin-fg full">
+          <label>Description</label>
+          <textarea id="eDesc" rows="4" placeholder="Describe the event..."></textarea>
+        </div>
+        <div class="admin-fg">
+          <label style="display:flex;align-items:center;gap:8px;">
+            <input type="checkbox" id="eRegistration"> Registration Required
+          </label>
+        </div>
+      </div>
+      <div class="modal-actions">
+        <button type="button" class="admin-btn secondary" onclick="closeModal('eventModal')">Cancel</button>
+        <button type="submit" class="admin-btn primary"><i class="fas fa-save"></i> Save Event</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="admin-toast" id="adminToast"></div>
+
+<script src="js/admin.js"></script>
+</body>
+</html>

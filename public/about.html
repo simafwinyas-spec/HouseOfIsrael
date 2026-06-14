@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us | House of Israel Assembly</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Lato:ital,wght@0,300;0,400;0,700;1,300&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .belief-card {
+      background: var(--dark-2);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 36px 28px;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .belief-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      transform: scaleX(0);
+      transition: transform 0.4s ease;
+    }
+    .belief-card:hover::before { transform: scaleX(1); }
+    .belief-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-gold); border-color: rgba(201,168,76,0.4); }
+    .belief-icon { font-size: 2rem; color: var(--gold); margin-bottom: 16px; }
+    .belief-card h3 { font-family: var(--font-h); font-size: 1.05rem; margin-bottom: 12px; }
+    .belief-card p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.7; }
+    .beliefs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .timeline { position: relative; padding-left: 40px; }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 8px; top: 0; bottom: 0;
+      width: 2px;
+      background: linear-gradient(180deg, var(--gold), transparent);
+    }
+    .tl-item { position: relative; margin-bottom: 40px; }
+    .tl-dot {
+      position: absolute;
+      left: -38px; top: 4px;
+      width: 14px; height: 14px;
+      background: var(--gold);
+      border-radius: 50%;
+      border: 2px solid var(--dark);
+      box-shadow: 0 0 10px rgba(201,168,76,0.5);
+    }
+    .tl-year {
+      font-family: var(--font-h);
+      font-size: 0.75rem;
+      color: var(--gold);
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .tl-item h4 { font-family: var(--font-h); font-size: 1rem; margin-bottom: 6px; }
+    .tl-item p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.65; }
+    .rabbi-profile {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 60px;
+      align-items: start;
+      background: var(--dark-2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 50px;
+    }
+    .rabbi-img {
+      aspect-ratio: 3/4;
+      background: linear-gradient(135deg, var(--dark-3), var(--dark-4));
+      border: 2px solid var(--border);
+      border-radius: 6px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      color: var(--text-muted);
+    }
+    .rabbi-img i { font-size: 4rem; color: var(--gold); opacity: 0.5; }
+    .rabbi-title { font-family: var(--font-h); font-size: 0.8rem; letter-spacing: 2px; color: var(--gold); text-align: center; }
+    .rabbi-info h2 { font-family: var(--font-h); font-size: 2rem; font-weight: 700; margin-bottom: 6px; }
+    .rabbi-role { color: var(--gold); font-weight: 700; font-size: 0.9rem; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 20px; display: block; }
+    .rabbi-info p { color: var(--text-muted); line-height: 1.85; margin-bottom: 14px; font-size: 0.96rem; }
+    .credential-tag {
+      display: inline-block;
+      background: rgba(201,168,76,0.1);
+      border: 1px solid var(--border);
+      color: var(--gold);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 5px 14px;
+      border-radius: 50px;
+      margin: 4px;
+    }
+    @media (max-width: 768px) {
+      .beliefs-grid { grid-template-columns: 1fr; }
+      .rabbi-profile { grid-template-columns: 1fr; gap: 30px; padding: 30px 20px; }
+    }
+  </style>
+</head>
+<body>
+<canvas id="particles"></canvas>
+
+<nav class="navbar" id="navbar">
+  <div class="nav-wrap">
+    <a href="index.html" class="nav-logo">
+      <span class="logo-star">✡</span>
+      <div class="logo-text">
+        <span class="logo-main">House of Israel</span>
+        <span class="logo-sub">Assembly</span>
+      </div>
+    </a>
+    <div class="nav-menu" id="navMenu">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="about.html" class="nav-link active">About</a>
+      <a href="sermons.html" class="nav-link">Sermons</a>
+      <a href="events.html" class="nav-link">Events</a>
+      <a href="gallery.html" class="nav-link">Gallery</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+      <a href="give.html" class="nav-link give-link">Give ✡</a>
+    </div>
+    <div class="nav-toggle" id="navToggle"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a>
+      <i class="fas fa-chevron-right" style="font-size:0.6rem"></i>
+      <span style="color:var(--gold)">About Us</span>
+    </div>
+    <div class="section-tag">Our Story</div>
+    <h1>About <span class="gold">House of Israel</span></h1>
+    <p>A community rooted in the ancient Hebrew faith</p>
+  </div>
+</div>
+
+<!-- MISSION SECTION -->
+<section class="section">
+  <div class="container">
+    <div class="about-grid">
+      <div data-aos="fade-right">
+        <div class="section-tag">Who We Are</div>
+        <h2 class="section-title">A Community Built on <span class="gold">Torah &amp; Truth</span></h2>
+        <div class="gold-line"></div>
+        <p class="section-text">House of Israel Assembly is more than a congregation — it is a family of believers who have answered the call to return to the ancient paths of our Hebrew faith. We are situated at Burma Barracks Chapel in Lusaka, Zambia.</p>
+        <p class="section-text">We believe that the full counsel of God — from Genesis to Revelation — forms a coherent Hebrew narrative. Our mission is to strip away centuries of religious tradition and return to the pure, unadulterated Word of God as it was given.</p>
+        <p class="section-text">Under the leadership of Rabbi Dr. Phillip Banda, we study the Torah portion weekly, observe the Biblical feasts, learn the Hebrew language, and walk in the commandments of YHWH with joy and reverence.</p>
+      </div>
+      <div data-aos="fade-left">
+        <div class="img-frame">
+          <div class="img-placeholder">
+            <span class="star-ph">✡</span>
+            <span class="lbl-ph">Our Congregation</span>
+          </div>
+          <div class="img-corner"></div>
+          <div class="img-corner-br"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OUR BELIEFS -->
+<section class="section dark-bg">
+  <div class="container">
+    <div class="section-header" data-aos="fade-up">
+      <div class="section-tag light">Our Beliefs</div>
+      <h2 class="section-title">What We <span class="gold">Believe</span></h2>
+      <div class="gold-line centered"></div>
+    </div>
+    <div class="beliefs-grid">
+      <div class="belief-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="belief-icon"><i class="fas fa-scroll"></i></div>
+        <h3>The Torah is Eternal</h3>
+        <p>We believe the Torah (the five books of Moses) is the foundation of all Scripture and contains the instructions of YHWH for righteous living, eternally valid for all who trust in the God of Israel.</p>
+      </div>
+      <div class="belief-card" data-aos="fade-up" data-aos-delay="150">
+        <div class="belief-icon"><i class="fas fa-star-of-david"></i></div>
+        <h3>One God — YHWH</h3>
+        <p>We confess the Shema: YHWH is One. We worship the God of Abraham, Isaac, and Jacob as He has revealed Himself through His holy Word, in His fullness and majesty.</p>
+      </div>
+      <div class="belief-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="belief-icon"><i class="fas fa-calendar-check"></i></div>
+        <h3>Biblical Feasts &amp; Shabbat</h3>
+        <p>We observe the seven feasts of the LORD (Leviticus 23) and keep the seventh-day Shabbat holy, not as law for salvation, but as joyful covenantal signs with our Creator.</p>
+      </div>
+      <div class="belief-card" data-aos="fade-up" data-aos-delay="250">
+        <div class="belief-icon"><i class="fas fa-book-bible"></i></div>
+        <h3>The Complete Word of God</h3>
+        <p>We believe in the entire Bible — both the Tanakh (Old Testament) and the Brit Chadashah (New Testament) — as the inspired, infallible Word of YHWH, interpreted through Hebrew eyes.</p>
+      </div>
+      <div class="belief-card" data-aos="fade-up" data-aos-delay="300">
+        <div class="belief-icon"><i class="fas fa-people-group"></i></div>
+        <h3>Community &amp; Fellowship</h3>
+        <p>We believe the Body of Messiah is a community — the household of faith — and that communal worship, shared meals (especially on feasts), and mutual support are central to our calling.</p>
+      </div>
+      <div class="belief-card" data-aos="fade-up" data-aos-delay="350">
+        <div class="belief-icon"><i class="fas fa-globe-africa"></i></div>
+        <h3>Hebrew Roots of All Nations</h3>
+        <p>We believe the Hebrew faith is not for one ethnic group but for all nations. The God of Israel calls people of every tongue and tribe to be grafted into His covenant people.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RABBI PROFILE -->
+<section class="section">
+  <div class="container">
+    <div class="section-header" data-aos="fade-up">
+      <div class="section-tag">Leadership</div>
+      <h2 class="section-title">Meet Our <span class="gold">Rabbi</span></h2>
+      <div class="gold-line centered"></div>
+    </div>
+    <div class="rabbi-profile" data-aos="fade-up">
+      <div class="rabbi-img">
+        <i class="fas fa-user-circle"></i>
+        <span class="rabbi-title">Rabbi Dr. Phillip Banda</span>
+      </div>
+      <div class="rabbi-info">
+        <h2>Rabbi Dr. Phillip Banda</h2>
+        <span class="rabbi-role">Host Rabbi · House of Israel Assembly</span>
+        <p>Rabbi Dr. Phillip Banda is an anointed teacher of the Word who has dedicated his life to the study and dissemination of the Hebrew roots of the Christian faith. With a deep love for the God of Israel and His Torah, he leads the House of Israel Assembly with wisdom, humility, and unwavering commitment to truth.</p>
+        <p>His teachings are grounded in careful study of the Hebrew Scriptures in their original language and context, bringing fresh insights that challenge and inspire believers to walk in the fullness of their covenant identity.</p>
+        <p>Rabbi Dr. Banda is known for his ability to make complex Hebrew concepts accessible to all, whether scholars or first-time learners. His heart is to see the entire Body of Messiah return to its Hebrew roots and walk in the light of the Torah.</p>
+        <div style="margin-top: 20px;">
+          <span class="credential-tag">Doctor of Theology</span>
+          <span class="credential-tag">Hebrew Language Scholar</span>
+          <span class="credential-tag">Torah Teacher</span>
+          <span class="credential-tag">Biblical Feast Expert</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OUR HISTORY / TIMELINE -->
+<section class="section dark-bg">
+  <div class="container">
+    <div class="section-header" data-aos="fade-up">
+      <div class="section-tag light">Our Journey</div>
+      <h2 class="section-title">Our <span class="gold">History</span></h2>
+      <div class="gold-line centered"></div>
+    </div>
+    <div style="max-width: 700px; margin: 0 auto;">
+      <div class="timeline" data-aos="fade-up">
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-year">The Beginning</div>
+          <h4>The Vision is Born</h4>
+          <p>Rabbi Dr. Phillip Banda receives a divine mandate to establish a Hebrew community in Lusaka that would teach the Word of God through its original Hebrew context — unfiltered and unadulterated.</p>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-year">Early Days</div>
+          <h4>First Gatherings</h4>
+          <p>The first Shabbat services begin with a small but devoted group of seekers, hungry to understand the Hebrew roots of their faith. The teachings ignite a passion for Torah and the Hebrew language.</p>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-year">Growth</div>
+          <h4>Moving to Burma Barracks Chapel</h4>
+          <p>As the community grows, House of Israel Assembly establishes its home at Burma Barracks Chapel — a central and accessible location that welcomes all who seek the pure Word of God.</p>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-year">Present Day</div>
+          <h4>A Thriving Hebrew Community</h4>
+          <p>Today, House of Israel Assembly is a vibrant, growing community with regular Shabbat services, Torah study classes, youth programs, and annual feast day celebrations that draw people from across Lusaka.</p>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-year">The Future</div>
+          <h4>Expanding the Vision</h4>
+          <p>The vision continues to grow — online sermons, a school of Hebrew, published Torah commentaries, and branches in other cities — all with the goal of returning YHWH's people to the ancient Hebrew path.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CALL TO ACTION -->
+<section class="rabbi-sec" data-aos="fade-up">
+  <div class="container">
+    <div class="rabbi-inner">
+      <span class="q-mark">"</span>
+      <p class="q-text">Thus says the LORD: Stand at the crossroads and look; ask for the ancient paths, ask where the good way is, and walk in it, and you will find rest for your souls.</p>
+      <div class="q-author">
+        <div class="q-line"></div>
+        <div>
+          <strong class="q-name">Jeremiah 6:16</strong>
+          <span class="q-role">The Holy Scriptures</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<div class="newsletter-sec">
+  <div class="container">
+    <div class="nl-inner" data-aos="fade-up">
+      <h2>Join Our <span>Hebrew Community</span></h2>
+      <p>Subscribe to our newsletter for Torah teachings, event updates, and community news.</p>
+      <form class="nl-form" id="newsletterForm">
+        <input type="email" placeholder="Enter your email address" required>
+        <button type="submit" class="btn">Subscribe</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="f-logo">
+          <span class="f-star">✡</span>
+          <div><span class="f-logo-main">House of Israel</span><span class="f-logo-sub">Assembly</span></div>
+        </div>
+        <p class="f-desc">A Hebrew Community dedicated to the pure, unadulterated Word of God through Hebrew lenses.</p>
+        <div class="f-social">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+          <a href="#"><i class="fab fa-whatsapp"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul class="f-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="sermons.html">Sermons</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Service Times</h4>
+        <ul class="f-links">
+          <li><a href="#">Shabbat – Saturday 9AM</a></li>
+          <li><a href="#">Torah Study – Wednesday 6PM</a></li>
+          <li><a href="#">Prayer Night – Friday 7PM</a></li>
+          <li><a href="#">Youth – Saturday 9AM</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact Us</h4>
+        <div class="f-contact">
+          <p><i class="fas fa-map-marker-alt"></i> Burma Barracks Chapel, Lusaka</p>
+          <p><i class="fas fa-phone"></i> +260 XXX XXX XXX</p>
+          <p><i class="fas fa-envelope"></i> info@houseofisraelassembly.org</p>
+        </div>
+        <div class="heb-box">
+          <p class="heb-text">שְׁמַע יִשְׂרָאֵל</p>
+          <p class="heb-trans">Shema Yisrael — Hear, O Israel</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 House of Israel Assembly. All Rights Reserved.</p>
+      <p><a href="/admin">Admin Panel</a></p>
+    </div>
+  </div>
+</footer>
+
+<button id="backTop"><i class="fas fa-chevron-up"></i></button>
+<div id="toast"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+[
+  {
+    "id": 1,
+    "title": "Shavuot Celebration",
+    "date": "2025-06-21",
+    "time": "9:00 AM",
+    "location": "Burma Barracks Chapel",
+    "description": "Join us as we celebrate Shavuot — the Feast of Weeks — commemorating the giving of the Torah at Mount Sinai. There will be special Torah readings, teachings, and a community feast.",
+    "category": "Feast Day",
+    "registration_required": false,
+    "image": ""
+  },
+  {
+    "id": 2,
+    "title": "Hebrew Roots Conference",
+    "date": "2025-07-05",
+    "time": "8:00 AM",
+    "location": "Burma Barracks Chapel",
+    "description": "A two-day conference exploring the Hebrew roots of our faith with guest speakers and Rabbi Dr. Banda. Topics include: Hebrew Language, Torah Observance, Biblical Feasts, and more.",
+    "category": "Conference",
+    "registration_required": true,
+    "image": ""
+  },
+  {
+    "id": 3,
+    "title": "Rosh Hashanah — Hebrew New Year",
+    "date": "2025-09-22",
+    "time": "Sundown",
+    "location": "Burma Barracks Chapel",
+    "description": "Celebrate the Hebrew New Year with shofar blowing, special prayers, Tashlich ceremony, and a festive community meal. The new year 5786 begins!",
+    "category": "Feast Day",
+    "registration_required": false,
+    "image": ""
+  },
+  {
+    "id": 4,
+    "title": "Yom Kippur — Day of Atonement",
+    "date": "2025-10-01",
+    "time": "Sundown",
+    "location": "Burma Barracks Chapel",
+    "description": "The holiest day of the Hebrew calendar. A day of fasting, prayer, repentance, and solemn assembly. Come and seek the face of YHWH together as a community.",
+    "category": "Feast Day",
+    "registration_required": false,
+    "image": ""
+  },
+  {
+    "id": 5,
+    "title": "Sukkot — Feast of Tabernacles",
+    "date": "2025-10-06",
+    "time": "Sundown",
+    "location": "Burma Barracks Chapel",
+    "description": "The most joyful feast of the Biblical calendar! We will build a Sukkah, celebrate with singing and dancing, and dwell together for seven days in remembrance of our time in the wilderness.",
+    "category": "Feast Day",
+    "registration_required": false,
+    "image": ""
+  }
+]

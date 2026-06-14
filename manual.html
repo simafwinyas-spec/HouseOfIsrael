@@ -1,0 +1,1318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>User Manual — House of Israel Assembly Website</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Lato:wght@300;400;700&display=swap');
+
+  :root {
+    --gold: #c9a84c;
+    --gold-d: #8a6218;
+    --dark: #0f1625;
+    --navy: #1a2035;
+    --text: #2d3748;
+    --muted: #718096;
+    --border: #e2e8f0;
+    --light: #f7fafc;
+    --success: #276749;
+    --info: #2b6cb0;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    font-family: 'Lato', Arial, sans-serif;
+    font-size: 10.5pt;
+    color: var(--text);
+    line-height: 1.7;
+    background: white;
+  }
+
+  /* ---- PAGE BREAKS ---- */
+  .page-break { page-break-after: always; break-after: always; }
+  .no-break { page-break-inside: avoid; break-inside: avoid; }
+
+  /* ---- COVER PAGE ---- */
+  .cover {
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(160deg, #0a0d18 0%, #1a2035 50%, #080c14 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 80px;
+    position: relative;
+    overflow: hidden;
+    color: white;
+    page-break-after: always;
+  }
+  .cover::before {
+    content: '✡';
+    position: absolute;
+    font-size: 500px;
+    color: rgba(201,168,76,0.04);
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    line-height: 1;
+  }
+  .cover-badge {
+    display: inline-block;
+    border: 1px solid rgba(201,168,76,0.5);
+    color: var(--gold);
+    font-size: 8pt;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    padding: 6px 20px;
+    border-radius: 50px;
+    margin-bottom: 30px;
+  }
+  .cover-star {
+    font-size: 80px;
+    color: var(--gold);
+    margin-bottom: 24px;
+    display: block;
+    text-shadow: 0 0 40px rgba(201,168,76,0.4);
+  }
+  .cover h1 {
+    font-family: 'Cinzel', serif;
+    font-size: 36pt;
+    font-weight: 900;
+    color: white;
+    line-height: 1.1;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+  }
+  .cover h1 span {
+    display: block;
+    background: linear-gradient(135deg, #f0d878, #c9a84c, #8a6218);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .cover-sub {
+    font-family: 'Cinzel', serif;
+    font-size: 11pt;
+    color: rgba(255,255,255,0.55);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 50px;
+  }
+  .cover-divider {
+    width: 80px;
+    height: 2px;
+    background: var(--gold);
+    margin: 0 auto 40px;
+  }
+  .cover-doc-title {
+    font-family: 'Cinzel', serif;
+    font-size: 18pt;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 8px;
+  }
+  .cover-doc-sub {
+    font-size: 10pt;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 60px;
+  }
+  .cover-meta {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    border-top: 1px solid rgba(201,168,76,0.2);
+    padding-top: 30px;
+    width: 100%;
+  }
+  .cover-meta-item { text-align: center; }
+  .cover-meta-item .label { font-size: 7pt; color: var(--gold); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px; }
+  .cover-meta-item .value { font-size: 9.5pt; color: rgba(255,255,255,0.7); }
+
+  /* ---- TOC ---- */
+  .toc-page {
+    padding: 60px 80px;
+    page-break-after: always;
+  }
+  .toc-header {
+    font-family: 'Cinzel', serif;
+    font-size: 22pt;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 8px;
+  }
+  .toc-header-line {
+    width: 50px; height: 3px;
+    background: var(--gold);
+    margin-bottom: 36px;
+  }
+  .toc-section {
+    margin-bottom: 6px;
+  }
+  .toc-entry {
+    display: flex;
+    align-items: baseline;
+    gap: 0;
+    margin-bottom: 3px;
+    font-size: 10pt;
+  }
+  .toc-entry.chapter {
+    font-weight: 700;
+    color: var(--dark);
+    font-size: 10.5pt;
+    margin-top: 10px;
+    margin-bottom: 2px;
+  }
+  .toc-entry.sub {
+    padding-left: 20px;
+    color: var(--muted);
+    font-size: 9.5pt;
+  }
+  .toc-title { flex: 1; }
+  .toc-dots {
+    flex: 1;
+    border-bottom: 1px dotted #cbd5e0;
+    margin: 0 8px 4px;
+  }
+  .toc-num { color: var(--gold); font-weight: 700; min-width: 25px; text-align: right; }
+  .toc-divider {
+    height: 1px;
+    background: var(--border);
+    margin: 14px 0;
+  }
+
+  /* ---- CONTENT PAGES ---- */
+  .content-page {
+    padding: 50px 80px 60px;
+  }
+
+  /* ---- CHAPTER HEADER ---- */
+  .ch-header {
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 18px;
+    margin-bottom: 30px;
+  }
+  .ch-num {
+    font-size: 8pt;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 6px;
+    display: block;
+  }
+  .ch-title {
+    font-family: 'Cinzel', serif;
+    font-size: 20pt;
+    font-weight: 700;
+    color: var(--dark);
+    line-height: 1.2;
+  }
+
+  /* ---- SECTION HEADERS ---- */
+  h2 {
+    font-family: 'Cinzel', serif;
+    font-size: 13pt;
+    font-weight: 700;
+    color: var(--dark);
+    margin: 28px 0 12px;
+    padding-left: 12px;
+    border-left: 3px solid var(--gold);
+  }
+  h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 10.5pt;
+    font-weight: 700;
+    color: var(--navy);
+    margin: 22px 0 10px;
+  }
+  h4 {
+    font-size: 9.5pt;
+    font-weight: 700;
+    color: var(--muted);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin: 16px 0 8px;
+  }
+
+  /* ---- BODY TEXT ---- */
+  p { margin-bottom: 12px; }
+  ul, ol { padding-left: 22px; margin-bottom: 14px; }
+  li { margin-bottom: 5px; }
+  li ul, li ol { margin-top: 4px; }
+  strong { color: var(--dark); }
+
+  /* ---- CALLOUT BOXES ---- */
+  .callout {
+    border-radius: 4px;
+    padding: 14px 18px;
+    margin: 18px 0;
+    font-size: 9.5pt;
+  }
+  .callout-tip {
+    background: #fffbeb;
+    border: 1px solid #fbbf24;
+    border-left: 4px solid var(--gold);
+  }
+  .callout-tip .callout-title { color: var(--gold-d); font-weight: 700; margin-bottom: 4px; }
+  .callout-info {
+    background: #ebf8ff;
+    border: 1px solid #90cdf4;
+    border-left: 4px solid var(--info);
+  }
+  .callout-info .callout-title { color: var(--info); font-weight: 700; margin-bottom: 4px; }
+  .callout-warn {
+    background: #fff5f5;
+    border: 1px solid #feb2b2;
+    border-left: 4px solid #e53e3e;
+  }
+  .callout-warn .callout-title { color: #c53030; font-weight: 700; margin-bottom: 4px; }
+  .callout-success {
+    background: #f0fff4;
+    border: 1px solid #9ae6b4;
+    border-left: 4px solid #38a169;
+  }
+  .callout-success .callout-title { color: var(--success); font-weight: 700; margin-bottom: 4px; }
+
+  /* ---- STEP BOXES ---- */
+  .steps { margin: 16px 0; }
+  .step {
+    display: flex;
+    gap: 14px;
+    margin-bottom: 12px;
+    page-break-inside: avoid;
+  }
+  .step-num {
+    width: 28px; height: 28px;
+    background: var(--gold);
+    color: white;
+    font-weight: 700;
+    font-size: 9pt;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .step-content { flex: 1; padding-top: 3px; }
+  .step-content strong { display: block; margin-bottom: 3px; color: var(--dark); }
+
+  /* ---- CODE BLOCKS ---- */
+  .code {
+    background: var(--dark);
+    color: #e2e8f0;
+    border-radius: 4px;
+    padding: 14px 18px;
+    font-family: 'Courier New', monospace;
+    font-size: 9pt;
+    margin: 14px 0;
+    overflow: hidden;
+  }
+  .code .comment { color: #718096; }
+  .code .gold { color: #c9a84c; }
+  .code .green { color: #68d391; }
+  .code .blue { color: #63b3ed; }
+  code {
+    background: #f7fafc;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 1px 5px;
+    font-family: 'Courier New', monospace;
+    font-size: 9pt;
+    color: #c53030;
+  }
+
+  /* ---- TABLES ---- */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    font-size: 9.5pt;
+  }
+  thead {
+    background: var(--dark);
+    color: white;
+  }
+  thead th {
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 700;
+    font-size: 8.5pt;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  tbody tr { border-bottom: 1px solid var(--border); }
+  tbody tr:nth-child(even) { background: var(--light); }
+  tbody td { padding: 9px 14px; }
+  tbody td:first-child { font-weight: 700; color: var(--dark); }
+  .tag-cell {
+    display: inline-block;
+    background: rgba(201,168,76,0.15);
+    color: var(--gold-d);
+    border-radius: 50px;
+    padding: 2px 10px;
+    font-size: 8pt;
+    font-weight: 700;
+  }
+
+  /* ---- CREDENTIAL BOX ---- */
+  .cred-box {
+    background: var(--dark);
+    border-radius: 6px;
+    padding: 20px 24px;
+    margin: 16px 0;
+    color: white;
+  }
+  .cred-box h4 { color: var(--gold); margin-top: 0; letter-spacing: 1px; }
+  .cred-row { display: flex; gap: 12px; margin-bottom: 8px; font-size: 10pt; }
+  .cred-label { color: rgba(255,255,255,0.5); min-width: 90px; font-size: 9pt; }
+  .cred-value { color: #c9a84c; font-family: 'Courier New', monospace; font-weight: 700; }
+
+  /* ---- FEATURE BOX ---- */
+  .feature-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin: 16px 0;
+  }
+  .feature-item {
+    background: var(--light);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 12px 14px;
+  }
+  .feature-item .fi-title { font-weight: 700; color: var(--dark); margin-bottom: 4px; font-size: 9.5pt; }
+  .feature-item .fi-title::before { content: '✡ '; color: var(--gold); }
+  .feature-item p { font-size: 9pt; color: var(--muted); margin: 0; }
+
+  /* ---- SECTION DIVIDER ---- */
+  .section-divider { border: none; border-top: 1px solid var(--border); margin: 24px 0; }
+
+  /* ---- PAGE FOOTER ---- */
+  .page-footer {
+    text-align: center;
+    color: var(--muted);
+    font-size: 8pt;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    margin-top: 40px;
+  }
+
+  /* ---- BADGES ---- */
+  .badge {
+    display: inline-block;
+    border-radius: 3px;
+    padding: 2px 8px;
+    font-size: 8pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .badge-gold { background: rgba(201,168,76,0.15); color: var(--gold-d); border: 1px solid rgba(201,168,76,0.4); }
+  .badge-green { background: rgba(56,161,105,0.12); color: #276749; border: 1px solid rgba(56,161,105,0.3); }
+  .badge-blue { background: rgba(43,108,176,0.12); color: #2b6cb0; border: 1px solid rgba(43,108,176,0.3); }
+  .badge-red { background: rgba(197,48,48,0.1); color: #c53030; border: 1px solid rgba(197,48,48,0.3); }
+
+  /* ---- ICON PILLS ---- */
+  .pill-list { margin: 10px 0; }
+  .pill {
+    display: inline-block;
+    background: var(--light);
+    border: 1px solid var(--border);
+    border-radius: 50px;
+    padding: 4px 14px;
+    font-size: 9pt;
+    margin: 3px 4px 3px 0;
+    color: var(--text);
+  }
+
+  /* ---- URL / PATH ---- */
+  .url {
+    font-family: 'Courier New', monospace;
+    color: var(--info);
+    font-size: 9.5pt;
+    background: #ebf8ff;
+    padding: 2px 6px;
+    border-radius: 3px;
+  }
+  .path {
+    font-family: 'Courier New', monospace;
+    font-size: 9pt;
+    background: #f7fafc;
+    border: 1px solid var(--border);
+    padding: 1px 6px;
+    border-radius: 3px;
+    color: var(--dark);
+  }
+
+  @media print {
+    body { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+    .cover { min-height: 100vh; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================= COVER PAGE ============================= -->
+<div class="cover">
+  <div class="cover-badge">Official Documentation · Version 1.0</div>
+  <span class="cover-star">✡</span>
+  <h1>House of Israel<br><span>Assembly</span></h1>
+  <div class="cover-sub">A Hebrew Community</div>
+  <div class="cover-divider"></div>
+  <div class="cover-doc-title">Website User Manual</div>
+  <div class="cover-doc-sub">Complete guide for administrators and content managers</div>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <div class="label">Document Version</div>
+      <div class="value">1.0.0</div>
+    </div>
+    <div class="cover-meta-item">
+      <div class="label">Prepared For</div>
+      <div class="value">Rabbi Dr. Phillip Banda</div>
+    </div>
+    <div class="cover-meta-item">
+      <div class="label">Date</div>
+      <div class="value">June 2025</div>
+    </div>
+    <div class="cover-meta-item">
+      <div class="label">Location</div>
+      <div class="value">Burma Barracks Chapel, Lusaka</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================= TABLE OF CONTENTS ============================= -->
+<div class="toc-page">
+  <div class="toc-header">Table of Contents</div>
+  <div class="toc-header-line"></div>
+
+  <div class="toc-section">
+    <div class="toc-entry chapter"><span class="toc-title">Chapter 1 — Introduction &amp; Overview</span><span class="toc-dots"></span><span class="toc-num">3</span></div>
+    <div class="toc-entry sub"><span class="toc-title">1.1 About the Website</span><span class="toc-dots"></span><span class="toc-num">3</span></div>
+    <div class="toc-entry sub"><span class="toc-title">1.2 Technology Stack</span><span class="toc-dots"></span><span class="toc-num">3</span></div>
+    <div class="toc-entry sub"><span class="toc-title">1.3 System Requirements</span><span class="toc-dots"></span><span class="toc-num">3</span></div>
+  </div>
+  <div class="toc-divider"></div>
+
+  <div class="toc-section">
+    <div class="toc-entry chapter"><span class="toc-title">Chapter 2 — Getting Started</span><span class="toc-dots"></span><span class="toc-num">4</span></div>
+    <div class="toc-entry sub"><span class="toc-title">2.1 Starting the Website Server</span><span class="toc-dots"></span><span class="toc-num">4</span></div>
+    <div class="toc-entry sub"><span class="toc-title">2.2 Accessing the Website &amp; Admin Panel</span><span class="toc-dots"></span><span class="toc-num">4</span></div>
+    <div class="toc-entry sub"><span class="toc-title">2.3 File Structure Reference</span><span class="toc-dots"></span><span class="toc-num">4</span></div>
+  </div>
+  <div class="toc-divider"></div>
+
+  <div class="toc-section">
+    <div class="toc-entry chapter"><span class="toc-title">Chapter 3 — Public Website Pages</span><span class="toc-dots"></span><span class="toc-num">5</span></div>
+    <div class="toc-entry sub"><span class="toc-title">3.1 Homepage</span><span class="toc-dots"></span><span class="toc-num">5</span></div>
+    <div class="toc-entry sub"><span class="toc-title">3.2 About Page</span><span class="toc-dots"></span><span class="toc-num">5</span></div>
+    <div class="toc-entry sub"><span class="toc-title">3.3 Sermons Page</span><span class="toc-dots"></span><span class="toc-num">5</span></div>
+    <div class="toc-entry sub"><span class="toc-title">3.4 Events Page</span><span class="toc-dots"></span><span class="toc-num">5</span></div>
+    <div class="toc-entry sub"><span class="toc-title">3.5 Gallery Page</span><span class="toc-dots"></span><span class="toc-num">6</span></div>
+    <div class="toc-entry sub"><span class="toc-title">3.6 Contact Page</span><span class="toc-dots"></span><span class="toc-num">6</span></div>
+    <div class="toc-entry sub"><span class="toc-title">3.7 Give (Donations) Page</span><span class="toc-dots"></span><span class="toc-num">6</span></div>
+  </div>
+  <div class="toc-divider"></div>
+
+  <div class="toc-section">
+    <div class="toc-entry chapter"><span class="toc-title">Chapter 4 — Admin Panel Guide</span><span class="toc-dots"></span><span class="toc-num">7</span></div>
+    <div class="toc-entry sub"><span class="toc-title">4.1 Logging In</span><span class="toc-dots"></span><span class="toc-num">7</span></div>
+    <div class="toc-entry sub"><span class="toc-title">4.2 Dashboard Overview</span><span class="toc-dots"></span><span class="toc-num">7</span></div>
+    <div class="toc-entry sub"><span class="toc-title">4.3 Editing the Homepage</span><span class="toc-dots"></span><span class="toc-num">7</span></div>
+    <div class="toc-entry sub"><span class="toc-title">4.4 Managing Sermons</span><span class="toc-dots"></span><span class="toc-num">8</span></div>
+    <div class="toc-entry sub"><span class="toc-title">4.5 Managing Events</span><span class="toc-dots"></span><span class="toc-num">8</span></div>
+    <div class="toc-entry sub"><span class="toc-title">4.6 Gallery Management</span><span class="toc-dots"></span><span class="toc-num">9</span></div>
+    <div class="toc-entry sub"><span class="toc-title">4.7 Prayer Requests</span><span class="toc-dots"></span><span class="toc-num">9</span></div>
+    <div class="toc-entry sub"><span class="toc-title">4.8 Newsletter Subscribers</span><span class="toc-dots"></span><span class="toc-num">9</span></div>
+    <div class="toc-entry sub"><span class="toc-title">4.9 Changing Your Password</span><span class="toc-dots"></span><span class="toc-num">9</span></div>
+  </div>
+  <div class="toc-divider"></div>
+
+  <div class="toc-section">
+    <div class="toc-entry chapter"><span class="toc-title">Chapter 5 — Deployment Guide</span><span class="toc-dots"></span><span class="toc-num">10</span></div>
+    <div class="toc-entry sub"><span class="toc-title">5.1 Option A: Local Network Deployment</span><span class="toc-dots"></span><span class="toc-num">10</span></div>
+    <div class="toc-entry sub"><span class="toc-title">5.2 Option B: Free Cloud Hosting (Railway / Render)</span><span class="toc-dots"></span><span class="toc-num">10</span></div>
+    <div class="toc-entry sub"><span class="toc-title">5.3 Option C: VPS Server Deployment</span><span class="toc-dots"></span><span class="toc-num">11</span></div>
+    <div class="toc-entry sub"><span class="toc-title">5.4 Registering a Domain Name</span><span class="toc-dots"></span><span class="toc-num">11</span></div>
+    <div class="toc-entry sub"><span class="toc-title">5.5 SSL / HTTPS Setup</span><span class="toc-dots"></span><span class="toc-num">11</span></div>
+  </div>
+  <div class="toc-divider"></div>
+
+  <div class="toc-section">
+    <div class="toc-entry chapter"><span class="toc-title">Chapter 6 — Customisation &amp; Maintenance</span><span class="toc-dots"></span><span class="toc-num">12</span></div>
+    <div class="toc-entry sub"><span class="toc-title">6.1 Adding Your Photos</span><span class="toc-dots"></span><span class="toc-num">12</span></div>
+    <div class="toc-entry sub"><span class="toc-title">6.2 Updating Contact Details</span><span class="toc-dots"></span><span class="toc-num">12</span></div>
+    <div class="toc-entry sub"><span class="toc-title">6.3 Adding Social Media Links</span><span class="toc-dots"></span><span class="toc-num">12</span></div>
+    <div class="toc-entry sub"><span class="toc-title">6.4 Regular Maintenance Checklist</span><span class="toc-dots"></span><span class="toc-num">12</span></div>
+  </div>
+  <div class="toc-divider"></div>
+
+  <div class="toc-section">
+    <div class="toc-entry chapter"><span class="toc-title">Chapter 7 — Troubleshooting</span><span class="toc-dots"></span><span class="toc-num">13</span></div>
+  </div>
+  <div class="toc-divider"></div>
+
+  <div class="toc-section">
+    <div class="toc-entry chapter"><span class="toc-title">Appendix — Quick Reference</span><span class="toc-dots"></span><span class="toc-num">14</span></div>
+  </div>
+
+  <div class="page-footer">House of Israel Assembly — Website User Manual v1.0 | Confidential</div>
+</div>
+
+
+<!-- ============================= CHAPTER 1 ============================= -->
+<div class="content-page">
+  <div class="ch-header">
+    <span class="ch-num">Chapter 1</span>
+    <div class="ch-title">Introduction &amp; Overview</div>
+  </div>
+
+  <h2>1.1 About the Website</h2>
+  <p>This website was custom-built for <strong>House of Israel Assembly</strong>, a Hebrew community situated at Burma Barracks Chapel, Lusaka, Zambia, under the leadership of <strong>Rabbi Dr. Phillip Banda</strong>.</p>
+  <p>The website serves as the online home for the community, enabling visitors to learn about the assembly, watch sermons, register for events, view photos, submit prayer requests, and make donations — all through a modern, professionally designed interface.</p>
+
+  <div class="feature-grid">
+    <div class="feature-item">
+      <div class="fi-title">7 Public Web Pages</div>
+      <p>Home, About, Sermons, Events, Gallery, Contact, and Give — each fully designed.</p>
+    </div>
+    <div class="feature-item">
+      <div class="fi-title">Full Admin CMS Panel</div>
+      <p>A private dashboard for managing all website content without touching code.</p>
+    </div>
+    <div class="feature-item">
+      <div class="fi-title">Dynamic Animations</div>
+      <p>Floating Hebrew letter particles, rotating Star of David, and scroll-triggered animations.</p>
+    </div>
+    <div class="feature-item">
+      <div class="fi-title">Sermon &amp; Event Management</div>
+      <p>Add, edit, and delete sermons and events directly from the admin dashboard.</p>
+    </div>
+    <div class="feature-item">
+      <div class="fi-title">Prayer Request System</div>
+      <p>Visitors submit prayer requests; the admin team can view and mark them as prayed.</p>
+    </div>
+    <div class="feature-item">
+      <div class="fi-title">Fully Responsive Design</div>
+      <p>Looks excellent on mobile phones, tablets, and desktop computers.</p>
+    </div>
+  </div>
+
+  <h2>1.2 Technology Stack</h2>
+  <table>
+    <thead><tr><th>Component</th><th>Technology</th><th>Purpose</th></tr></thead>
+    <tbody>
+      <tr><td>Backend Server</td><td>Node.js + Express.js</td><td>Runs the website and handles all API requests</td></tr>
+      <tr><td>Database</td><td>JSON Files</td><td>Stores sermons, events, prayers, content</td></tr>
+      <tr><td>Authentication</td><td>JWT (JSON Web Tokens)</td><td>Secures the admin panel login</td></tr>
+      <tr><td>Frontend Design</td><td>HTML5, CSS3, JavaScript</td><td>The visual website the public sees</td></tr>
+      <tr><td>Animations</td><td>AOS Library + Canvas API</td><td>Scroll animations &amp; floating particles</td></tr>
+      <tr><td>Icons</td><td>Font Awesome 6</td><td>All icons throughout the website</td></tr>
+      <tr><td>File Uploads</td><td>Multer</td><td>Handles gallery image uploads</td></tr>
+    </tbody>
+  </table>
+
+  <h2>1.3 System Requirements</h2>
+  <p>To run the website on your computer, you need the following:</p>
+  <ul>
+    <li><strong>Node.js</strong> — Version 18 or higher (installed at <span class="path">https://nodejs.org</span>)</li>
+    <li><strong>Operating System</strong> — Windows 10/11, macOS, or Ubuntu Linux</li>
+    <li><strong>RAM</strong> — Minimum 512 MB available</li>
+    <li><strong>Storage</strong> — Minimum 200 MB free space</li>
+    <li><strong>Internet Browser</strong> — Chrome, Edge, Firefox, or Safari (modern version)</li>
+    <li><strong>Internet Connection</strong> — Required only to load fonts and icons from CDN</li>
+  </ul>
+
+  <div class="callout callout-info">
+    <div class="callout-title">ℹ️ Node.js is already installed</div>
+    If you are running this website on the same computer where it was set up, Node.js v24 is already installed and the dependencies are ready. Simply run <strong>START.bat</strong> to launch the server.
+  </div>
+
+  <div class="page-footer">House of Israel Assembly — Website User Manual v1.0 | Chapter 1: Introduction</div>
+</div>
+
+<div class="page-break"></div>
+
+<!-- ============================= CHAPTER 2 ============================= -->
+<div class="content-page">
+  <div class="ch-header">
+    <span class="ch-num">Chapter 2</span>
+    <div class="ch-title">Getting Started</div>
+  </div>
+
+  <h2>2.1 Starting the Website Server</h2>
+  <p>The website runs on a local server. You must start the server every time you want to use the website. Follow these steps:</p>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <strong>Open File Explorer</strong>
+        Navigate to the folder <span class="path">C:\HouseOfIsrael\</span> on your computer.
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <strong>Double-click START.bat</strong>
+        This file starts the website server automatically. A black Command Prompt window will open.
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <strong>Wait for the confirmation message</strong>
+        You will see a message saying the server is running at <span class="url">http://localhost:3000</span>. This means the website is ready.
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <strong>Keep the window open</strong>
+        Do not close the Command Prompt window while using the website. Closing it will stop the server.
+      </div>
+    </div>
+  </div>
+
+  <div class="callout callout-warn">
+    <div class="callout-title">⚠️ Important</div>
+    The Command Prompt (black window) must remain open for the website to work. You can minimise it but do not close it.
+  </div>
+
+  <h2>2.2 Accessing the Website &amp; Admin Panel</h2>
+  <p>Once the server is running, open your web browser and go to these addresses:</p>
+  <table>
+    <thead><tr><th>What</th><th>URL / Address</th><th>Who uses it</th></tr></thead>
+    <tbody>
+      <tr><td>Main Website</td><td><span class="url">http://localhost:3000</span></td><td>Everyone — visitors, public</td></tr>
+      <tr><td>About Page</td><td><span class="url">http://localhost:3000/about.html</span></td><td>Public visitors</td></tr>
+      <tr><td>Admin Login</td><td><span class="url">http://localhost:3000/admin</span></td><td>Administrator only</td></tr>
+    </tbody>
+  </table>
+
+  <div class="cred-box">
+    <h4>Default Admin Login Credentials</h4>
+    <div class="cred-row"><span class="cred-label">Username:</span><span class="cred-value">admin</span></div>
+    <div class="cred-row"><span class="cred-label">Password:</span><span class="cred-value">hoisrael2025</span></div>
+    <div class="cred-row"><span class="cred-label">Admin URL:</span><span class="cred-value">http://localhost:3000/admin</span></div>
+    <p style="color:rgba(255,255,255,0.5);font-size:9pt;margin-top:8px;">⚠️ Change your password immediately after first login via Settings in the admin panel.</p>
+  </div>
+
+  <h2>2.3 File Structure Reference</h2>
+  <p>All website files are located in <span class="path">C:\HouseOfIsrael\</span>. Here is what each folder contains:</p>
+  <div class="code">
+<span class="gold">C:\HouseOfIsrael\</span>
+│
+├── <span class="green">START.bat</span>          <span class="comment">← Double-click this to start the website</span>
+├── <span class="green">server.js</span>          <span class="comment">← The main server (do not edit)</span>
+├── <span class="green">package.json</span>       <span class="comment">← Dependencies list</span>
+│
+├── <span class="blue">public\</span>            <span class="comment">← All website pages visible to the public</span>
+│   ├── index.html     <span class="comment">← Homepage</span>
+│   ├── about.html     <span class="comment">← About page</span>
+│   ├── sermons.html   <span class="comment">← Sermons page</span>
+│   ├── events.html    <span class="comment">← Events page</span>
+│   ├── gallery.html   <span class="comment">← Gallery page</span>
+│   ├── contact.html   <span class="comment">← Contact page</span>
+│   ├── give.html      <span class="comment">← Donations page</span>
+│   ├── css\style.css  <span class="comment">← All design styles</span>
+│   └── js\main.js     <span class="comment">← Website functionality</span>
+│
+├── <span class="blue">admin\</span>             <span class="comment">← Admin panel (password-protected)</span>
+│   ├── login.html     <span class="comment">← Admin login page</span>
+│   └── dashboard.html <span class="comment">← Admin control panel</span>
+│
+├── <span class="blue">data\</span>              <span class="comment">← All website data (JSON files)</span>
+│   ├── content.json   <span class="comment">← Homepage text content</span>
+│   ├── sermons.json   <span class="comment">← All sermons</span>
+│   ├── events.json    <span class="comment">← All events</span>
+│   ├── gallery.json   <span class="comment">← Gallery image info</span>
+│   ├── prayer-requests.json
+│   └── newsletter.json
+│
+└── <span class="blue">uploads\</span>           <span class="comment">← Uploaded gallery images stored here</span></div>
+
+  <div class="callout callout-tip">
+    <div class="callout-title">💡 Tip</div>
+    Never manually edit the files inside the <span class="path">data\</span> folder. Always use the Admin Panel to manage content — it is safer and prevents errors.
+  </div>
+
+  <div class="page-footer">House of Israel Assembly — Website User Manual v1.0 | Chapter 2: Getting Started</div>
+</div>
+
+<div class="page-break"></div>
+
+<!-- ============================= CHAPTER 3 ============================= -->
+<div class="content-page">
+  <div class="ch-header">
+    <span class="ch-num">Chapter 3</span>
+    <div class="ch-title">Public Website Pages</div>
+  </div>
+
+  <p>The website has <strong>7 public pages</strong> that visitors can see. Each page has a consistent design with the House of Israel gold-and-dark colour theme, Hebrew decorative elements, and smooth animations.</p>
+
+  <h2>3.1 Homepage <span class="badge badge-gold">index.html</span></h2>
+  <p>The homepage is the main entry point for all visitors. It contains the following sections:</p>
+  <ul>
+    <li><strong>Hero Section</strong> — Full-screen animated background with floating Hebrew letters (✡ א ב ג), the assembly name in large gold text, tagline, and location</li>
+    <li><strong>Announcement Bar</strong> — Gold banner showing service times</li>
+    <li><strong>About Preview</strong> — Brief description with animated statistics (members, services, sermons)</li>
+    <li><strong>Rabbi Quote</strong> — A featured quote from Rabbi Dr. Phillip Banda</li>
+    <li><strong>Services Grid</strong> — Cards showing Shabbat, Torah Study, Prayer Meeting, Youth Program</li>
+    <li><strong>Latest Sermons</strong> — The 3 most recent sermons (auto-loaded)</li>
+    <li><strong>Upcoming Events</strong> — Next 3 events (auto-loaded)</li>
+    <li><strong>Prayer Request Form</strong> — Visitors can submit prayer requests</li>
+    <li><strong>Gallery Preview</strong> — Photo grid teaser</li>
+    <li><strong>Location &amp; Contact</strong> — Address, phone, email, social links</li>
+    <li><strong>Newsletter Signup</strong> — Email subscription form</li>
+    <li><strong>Footer</strong> — Links, service times, Hebrew Shema text</li>
+  </ul>
+
+  <h2>3.2 About Page <span class="badge badge-gold">about.html</span></h2>
+  <p>Introduces the assembly to new visitors. Contains:</p>
+  <ul>
+    <li>Mission statement and community description</li>
+    <li><strong>Our Beliefs</strong> — 6 belief cards covering Torah, Shabbat, feasts, community, and Hebrew roots</li>
+    <li><strong>Rabbi Profile</strong> — Full profile of Rabbi Dr. Phillip Banda with credentials</li>
+    <li><strong>History Timeline</strong> — The journey of the assembly from founding to today</li>
+    <li>A scripture callout (Jeremiah 6:16)</li>
+  </ul>
+
+  <h2>3.3 Sermons Page <span class="badge badge-gold">sermons.html</span></h2>
+  <p>A searchable, filterable library of all teachings. Features include:</p>
+  <ul>
+    <li><strong>Search Bar</strong> — Search by sermon title, speaker, or description</li>
+    <li><strong>Category Filters</strong> — All, Torah Portion, Shabbat Teaching, Special Teaching</li>
+    <li><strong>Sermon Cards</strong> — Each card shows the title, date, speaker, duration, category, and a Watch Now button</li>
+    <li>YouTube links open directly in YouTube when provided by the admin</li>
+  </ul>
+
+  <h2>3.4 Events Page <span class="badge badge-gold">events.html</span></h2>
+  <p>Shows all upcoming community gatherings. Contains:</p>
+  <ul>
+    <li><strong>2025 Biblical Feast Calendar</strong> — A visual grid showing all 6 major feasts with Hebrew names and dates</li>
+    <li><strong>Events List</strong> — All events sorted by date with date box, description, category, and action button</li>
+    <li><strong>Event Registration Form</strong> — Visitors can fill in their name, email, phone, number of guests, and select the event they wish to attend</li>
+  </ul>
+
+  <h2>3.5 Gallery Page <span class="badge badge-gold">gallery.html</span></h2>
+  <p>A photo showcase of community life. Features:</p>
+  <ul>
+    <li><strong>Category Filter Buttons</strong> — All Photos, Services, Torah Study, Events, Community, Youth</li>
+    <li><strong>Masonry-style grid layout</strong> — Photos display in an attractive variable-size grid</li>
+    <li><strong>Lightbox viewer</strong> — Clicking any image opens it in a full-screen overlay</li>
+    <li>Images are uploaded through the Admin Panel (see Chapter 4.6)</li>
+  </ul>
+
+  <h2>3.6 Contact Page <span class="badge badge-gold">contact.html</span></h2>
+  <p>Provides all ways to reach the assembly. Includes:</p>
+  <ul>
+    <li>Contact information (address, phone, email, service times)</li>
+    <li><strong>Contact Form</strong> — Name, email, phone, subject dropdown, message</li>
+    <li>Social media buttons (Facebook, YouTube, WhatsApp, Instagram, TikTok)</li>
+    <li><strong>FAQ Section</strong> — Expandable answers to common questions about Hebrew community</li>
+  </ul>
+
+  <h2>3.7 Give Page <span class="badge badge-gold">give.html</span></h2>
+  <p>The online giving and donations page. Contains:</p>
+  <ul>
+    <li><strong>Quick Amount Selector</strong> — Preset amounts (K50, K100, K200, K500, K1000) plus custom</li>
+    <li><strong>Giving Type</strong> — Tithe, First Fruits, Freewill, Feast Offering, Building Fund, Media Ministry, Youth</li>
+    <li><strong>Payment Methods</strong> — Mobile Money (Airtel/MTN), Bank Transfer, In-Person</li>
+    <li><strong>Impact Section</strong> — 6 cards showing where donations go</li>
+    <li>Scripture callout (Malachi 3:10)</li>
+  </ul>
+
+  <div class="callout callout-tip">
+    <div class="callout-title">💡 Customising Pages</div>
+    The main text content on these pages (hero text, about text, rabbi quote, contact info) can be updated through the Admin Panel → Edit Homepage. For structural changes, the HTML files in <span class="path">C:\HouseOfIsrael\public\</span> can be edited with any text editor.
+  </div>
+
+  <div class="page-footer">House of Israel Assembly — Website User Manual v1.0 | Chapter 3: Public Pages</div>
+</div>
+
+<div class="page-break"></div>
+
+<!-- ============================= CHAPTER 4 ============================= -->
+<div class="content-page">
+  <div class="ch-header">
+    <span class="ch-num">Chapter 4</span>
+    <div class="ch-title">Admin Panel Guide</div>
+  </div>
+
+  <p>The Admin Panel is a private, password-protected control centre that allows you to manage all website content without needing any technical knowledge. Access it at <span class="url">http://localhost:3000/admin</span></p>
+
+  <h2>4.1 Logging In</h2>
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><div class="step-content"><strong>Open your browser</strong> and go to <span class="url">http://localhost:3000/admin</span></div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-content"><strong>Enter your username</strong> — default is <code>admin</code></div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-content"><strong>Enter your password</strong> — default is <code>hoisrael2025</code></div></div>
+    <div class="step"><div class="step-num">4</div><div class="step-content"><strong>Click "Sign In"</strong> — You will be taken to the dashboard</div></div>
+  </div>
+  <div class="callout callout-warn">
+    <div class="callout-title">⚠️ Security Reminder</div>
+    Change the default password immediately after first use. Go to <strong>Settings → Change Password</strong> in the admin panel. Do not share your login credentials with anyone outside the authorised team.
+  </div>
+
+  <h2>4.2 Dashboard Overview</h2>
+  <p>The dashboard is the first page you see after logging in. It shows:</p>
+  <ul>
+    <li><strong>Statistics Cards</strong> — Total sermons, events, prayer requests, and newsletter subscribers at a glance</li>
+    <li><strong>Quick Actions</strong> — Shortcut buttons: Add Sermon, Add Event, Upload Image, View Prayers, Edit Homepage, View Subscribers</li>
+    <li><strong>Left Sidebar</strong> — Navigation to all admin sections</li>
+    <li><strong>Live Clock</strong> — Current time shown in the top bar</li>
+  </ul>
+
+  <h2>4.3 Editing the Homepage Content</h2>
+  <p>Go to <strong>Edit Homepage</strong> in the sidebar. You can change the following:</p>
+  <table>
+    <thead><tr><th>Section</th><th>What you can edit</th></tr></thead>
+    <tbody>
+      <tr><td>Hero Section</td><td>Badge text, title (lines 1 &amp; 2), subtitle/tagline, location text</td></tr>
+      <tr><td>About Section</td><td>Two description paragraphs, member count, services per year, online sermons count</td></tr>
+      <tr><td>Rabbi Quote</td><td>The featured quote text, author name, and author title</td></tr>
+      <tr><td>Contact Information</td><td>Address, phone number, email, Facebook, YouTube, WhatsApp, Instagram URLs</td></tr>
+    </tbody>
+  </table>
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><div class="step-content"><strong>Click "Edit Homepage"</strong> in the left sidebar</div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-content"><strong>Update the text fields</strong> you want to change</div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-content"><strong>Scroll down and click "Save All Changes"</strong> — Changes apply instantly to the live website</div></div>
+  </div>
+
+  <h2>4.4 Managing Sermons</h2>
+  <p>Go to <strong>Manage Sermons</strong> in the sidebar to see all sermons in a list.</p>
+  <h3>Adding a New Sermon</h3>
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><div class="step-content"><strong>Click "Add New Sermon"</strong> button at the top right</div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-content"><strong>Fill in the sermon details:</strong>
+      <ul style="margin-top:6px;">
+        <li><strong>Sermon Title</strong> — The full title of the teaching</li>
+        <li><strong>Category</strong> — Torah Portion, Shabbat Teaching, Special Teaching, etc.</li>
+        <li><strong>Date</strong> — The date the sermon was delivered</li>
+        <li><strong>Speaker</strong> — Defaults to "Rabbi Dr. Phillip Banda"</li>
+        <li><strong>Duration</strong> — e.g. "58 min" or "1 hr 20 min"</li>
+        <li><strong>YouTube Link</strong> — Paste the YouTube URL if the sermon is on YouTube</li>
+        <li><strong>Description</strong> — A brief summary of the teaching</li>
+        <li><strong>Featured</strong> — Tick this to mark as a featured sermon</li>
+      </ul>
+    </div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-content"><strong>Click "Save Sermon"</strong> — It will appear on the Sermons page immediately</div></div>
+  </div>
+  <h3>Editing or Deleting a Sermon</h3>
+  <p>Each sermon row has two buttons: <span class="badge badge-blue">Edit (pencil icon)</span> to update it, and <span class="badge badge-red">Delete (trash icon)</span> to remove it permanently. Deletion is instant and cannot be undone.</p>
+
+  <div class="page-footer">House of Israel Assembly — Website User Manual v1.0 | Chapter 4: Admin Panel</div>
+</div>
+
+<div class="page-break"></div>
+
+<div class="content-page">
+
+  <h2>4.5 Managing Events</h2>
+  <p>Go to <strong>Manage Events</strong> in the sidebar to see all events.</p>
+  <h3>Adding a New Event</h3>
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><div class="step-content"><strong>Click "Add New Event"</strong> button</div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-content"><strong>Fill in the event details:</strong>
+      <ul style="margin-top:6px;">
+        <li><strong>Event Title</strong> — Name of the event (e.g. "Rosh Hashanah Celebration")</li>
+        <li><strong>Date</strong> — Select the date from the calendar picker</li>
+        <li><strong>Time</strong> — e.g. "9:00 AM" or "Sundown"</li>
+        <li><strong>Location</strong> — Defaults to "Burma Barracks Chapel"</li>
+        <li><strong>Category</strong> — Feast Day, Conference, Workshop, Youth Event, etc.</li>
+        <li><strong>Description</strong> — Details about the event</li>
+        <li><strong>Registration Required</strong> — Tick if people need to register in advance</li>
+      </ul>
+    </div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-content"><strong>Click "Save Event"</strong> — It appears on the Events page immediately, sorted by date</div></div>
+  </div>
+
+  <h3>Editing or Deleting an Event</h3>
+  <p>Use the <span class="badge badge-blue">Edit</span> button to modify event details, or <span class="badge badge-red">Delete</span> to permanently remove it. Events in the past are automatically moved down in the list.</p>
+
+  <hr class="section-divider">
+
+  <h2>4.6 Gallery Management</h2>
+  <p>Go to <strong>Manage Gallery</strong> in the sidebar. You can upload photos from community services, events, and activities.</p>
+  <h3>Uploading a New Image</h3>
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><div class="step-content"><strong>Click "Select Image"</strong> in the upload area</div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-content"><strong>Choose a photo</strong> from your computer (JPG, PNG, WEBP supported; max 5 MB per image)</div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-content"><strong>A preview will appear.</strong> Add a <strong>Caption</strong> (e.g. "Shabbat Service June 2025") and a <strong>Category</strong> (e.g. Service, Youth, Events)</div></div>
+    <div class="step"><div class="step-num">4</div><div class="step-content">Tick <strong>"Featured (large)"</strong> if you want this image to appear larger in the gallery grid</div></div>
+    <div class="step"><div class="step-num">5</div><div class="step-content"><strong>Click "Upload"</strong> — The image is saved and appears on the Gallery page immediately</div></div>
+  </div>
+  <div class="callout callout-tip">
+    <div class="callout-title">💡 Image Tips</div>
+    <ul>
+      <li>Use landscape photos (wider than tall) for best results</li>
+      <li>Recommended minimum size: 800×600 pixels</li>
+      <li>Good photos to upload: Shabbat services, Torah study sessions, feast celebrations, youth activities, community meals</li>
+    </ul>
+  </div>
+
+  <hr class="section-divider">
+
+  <h2>4.7 Prayer Requests</h2>
+  <p>Go to <strong>Prayer Requests</strong> in the sidebar to see all requests submitted by visitors.</p>
+  <p>Each request shows the submitter's name (or "Anonymous"), email (if provided), the date submitted, and the full prayer request text.</p>
+  <p>Click <span class="badge badge-green">Mark Prayed</span> next to a request to record that your team has prayed for it. This updates the status and the button changes to a green "Prayed" tag.</p>
+
+  <hr class="section-divider">
+
+  <h2>4.8 Newsletter Subscribers</h2>
+  <p>Go to <strong>Newsletter</strong> in the sidebar to see a list of all email addresses that have subscribed to your newsletter. Each entry shows the email address and the date they subscribed.</p>
+  <p>You can use this list to send out newsletters using any email service (such as Gmail, Mailchimp, or any other tool).</p>
+
+  <hr class="section-divider">
+
+  <h2>4.9 Changing Your Password</h2>
+  <div class="callout callout-warn">
+    <div class="callout-title">⚠️ Do This First</div>
+    Change the default password immediately after your first login for security.
+  </div>
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><div class="step-content"><strong>Click "Settings"</strong> at the bottom of the left sidebar</div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-content"><strong>Enter your current password</strong> (default: <code>hoisrael2025</code>)</div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-content"><strong>Enter your new password</strong> and confirm it</div></div>
+    <div class="step"><div class="step-num">4</div><div class="step-content"><strong>Click "Update Password"</strong> — You will be logged out and must log in with the new password</div></div>
+  </div>
+  <p>Choose a strong password: at least 10 characters, mixing letters, numbers, and symbols.</p>
+
+  <div class="page-footer">House of Israel Assembly — Website User Manual v1.0 | Chapter 4: Admin Panel</div>
+</div>
+
+<div class="page-break"></div>
+
+<!-- ============================= CHAPTER 5 ============================= -->
+<div class="content-page">
+  <div class="ch-header">
+    <span class="ch-num">Chapter 5</span>
+    <div class="ch-title">Deployment Guide</div>
+  </div>
+
+  <p>Currently the website runs only on your local computer (localhost). To make it accessible on the internet — so that anyone anywhere can visit it — you need to <em>deploy</em> it to a hosting server. Below are three options, from easiest to most advanced.</p>
+
+  <h2>5.1 Option A: Local Network Sharing <span class="badge badge-green">Simplest</span></h2>
+  <p>Share the website with people on the same Wi-Fi or local network (e.g. within the church building).</p>
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><div class="step-content"><strong>Find your computer's IP address</strong> — Open Command Prompt and type <code>ipconfig</code>. Look for the number next to "IPv4 Address" (e.g. 192.168.1.5)</div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-content"><strong>Start the server</strong> with START.bat as usual</div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-content"><strong>Others on the same Wi-Fi</strong> can visit <span class="url">http://192.168.1.5:3000</span> (replace with your actual IP)</div></step>
+  </div>
+  <div class="callout callout-info">
+    <div class="callout-title">ℹ️ Limitation</div>
+    This only works while your computer is on and connected to the same network. It is not accessible from outside your home or church building.
+  </div>
+
+  <h2>5.2 Option B: Free Cloud Hosting (Railway or Render) <span class="badge badge-blue">Recommended</span></h2>
+  <p>This makes the website permanently accessible on the internet for free. <strong>Railway.app</strong> is the easiest platform for this type of Node.js website.</p>
+
+  <h3>Step 1 — Push your code to GitHub</h3>
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><div class="step-content"><strong>Create a free account</strong> at <span class="path">https://github.com</span></div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-content"><strong>Create a new repository</strong> named <code>house-of-israel-website</code> and make it Private</div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-content"><strong>Install Git</strong> from <span class="path">https://git-scm.com</span> if not already installed</div></div>
+    <div class="step"><div class="step-num">4</div><div class="step-content"><strong>Open Command Prompt in C:\HouseOfIsrael</strong> and run:
+      <div class="code"><span class="green">git init</span>
+<span class="green">git add .</span>
+<span class="green">git commit -m "Initial website"</span>
+<span class="green">git remote add origin</span> <span class="gold">YOUR_GITHUB_URL</span>
+<span class="green">git push -u origin main</span></div>
+      <span style="font-size:9pt;color:var(--muted);">Note: Before pushing, create a <span class="path">.gitignore</span> file with <code>node_modules/</code> and <code>uploads/</code> on separate lines.</span>
+    </div></div>
+  </div>
+
+  <h3>Step 2 — Deploy on Railway.app</h3>
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><div class="step-content"><strong>Go to</strong> <span class="path">https://railway.app</span> and sign up with your GitHub account</div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-content"><strong>Click "New Project" → Deploy from GitHub Repo"</strong> and select your repository</div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-content"><strong>Railway auto-detects Node.js.</strong> In the Variables tab, add: <code>PORT = 3000</code> and <code>JWT_SECRET = your-secret-key-here</code></div></div>
+    <div class="step"><div class="step-num">4</div><div class="step-content"><strong>Click Deploy.</strong> In 2–3 minutes, Railway gives you a free URL like <span class="url">https://house-of-israel.railway.app</span></div></div>
+    <div class="step"><div class="step-num">5</div><div class="step-content"><strong>Share this URL</strong> with anyone in the world — they can access the website from any device</div></div>
+  </div>
+
+  <div class="callout callout-success">
+    <div class="callout-title">✅ Railway Free Tier Includes</div>
+    500 hours/month of uptime, 1 GB RAM, 1 GB storage. This is more than enough for a community website.
+  </div>
+
+  <h2>5.3 Option C: VPS Server Deployment <span class="badge badge-red">Advanced</span></h2>
+  <p>A Virtual Private Server (VPS) gives you the most control. Recommended providers: <strong>DigitalOcean</strong> ($6/month), <strong>Hetzner</strong> ($4/month), or <strong>Contabo</strong>.</p>
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><div class="step-content">Create a Ubuntu 22.04 server (1 GB RAM is sufficient)</div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-content">SSH into the server and install Node.js: <div class="code"><span class="green">curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -</span>
+<span class="green">sudo apt-get install -y nodejs</span></div></div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-content">Upload your website files (using FileZilla SFTP or git) and run <code>npm install</code></div></div>
+    <div class="step"><div class="step-num">4</div><div class="step-content">Install PM2 to keep the server running 24/7: <div class="code"><span class="green">npm install -g pm2</span>
+<span class="green">pm2 start server.js --name "house-of-israel"</span>
+<span class="green">pm2 startup</span>
+<span class="green">pm2 save</span></div></div></div>
+    <div class="step"><div class="step-num">5</div><div class="step-content">Install Nginx as a reverse proxy and point it to port 3000</div></div>
+    <div class="step"><div class="step-num">6</div><div class="step-content">Get a free SSL certificate with Let's Encrypt: <code>sudo certbot --nginx -d yourdomain.com</code></div></div>
+  </div>
+
+  <h2>5.4 Registering a Domain Name</h2>
+  <p>A domain name (e.g. <span class="url">www.houseofisraelassembly.org</span>) makes your website professional and easy to remember.</p>
+  <table>
+    <thead><tr><th>Registrar</th><th>Approximate Cost</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td>Namecheap.com</td><td>~$10–15/year</td><td>Recommended — easy interface, free WhoisGuard</td></tr>
+      <tr><td>GoDaddy.com</td><td>~$12–20/year</td><td>Popular, good support</td></tr>
+      <tr><td>Google Domains</td><td>~$12/year</td><td>Simple, reliable</td></tr>
+      <tr><td>Porkbun.com</td><td>~$8–12/year</td><td>Cheapest option</td></tr>
+    </tbody>
+  </table>
+  <p>Recommended domain names: <span class="pill">houseofisraelassembly.org</span> <span class="pill">hoisrael.org</span> <span class="pill">houseofisraelzm.org</span></p>
+
+  <h2>5.5 SSL / HTTPS Setup</h2>
+  <p>HTTPS encrypts the connection between your website and visitors. It is <strong>required</strong> for any public website today. Both Railway and Render automatically provide free SSL certificates. For VPS, use <strong>Let's Encrypt</strong> (free) with the <code>certbot</code> tool.</p>
+
+  <div class="callout callout-tip">
+    <div class="callout-title">💡 Recommendation</div>
+    For a first-time deployment, use <strong>Railway.app (Option B)</strong>. It is free, automatic, and requires no server management knowledge. You can always move to a VPS later.
+  </div>
+
+  <div class="page-footer">House of Israel Assembly — Website User Manual v1.0 | Chapter 5: Deployment</div>
+</div>
+
+<div class="page-break"></div>
+
+<!-- ============================= CHAPTER 6 ============================= -->
+<div class="content-page">
+  <div class="ch-header">
+    <span class="ch-num">Chapter 6</span>
+    <div class="ch-title">Customisation &amp; Maintenance</div>
+  </div>
+
+  <h2>6.1 Adding Your Real Photos</h2>
+  <p>The gallery currently shows placeholder boxes. To replace them with real photos from your services and events:</p>
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><div class="step-content">Log into the Admin Panel at <span class="url">http://localhost:3000/admin</span></div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-content">Click <strong>Manage Gallery</strong> in the sidebar</div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-content">Click <strong>Select Image</strong> and choose a photo from your computer</div></div>
+    <div class="step"><div class="step-num">4</div><div class="step-content">Add a caption and category, then click <strong>Upload</strong></div></div>
+    <div class="step"><div class="step-num">5</div><div class="step-content">Repeat for all photos — they appear on the Gallery page immediately</div></div>
+  </div>
+
+  <h2>6.2 Updating Contact Details</h2>
+  <p>To update phone numbers, email address, or social media links:</p>
+  <ol>
+    <li>Go to Admin Panel → <strong>Edit Homepage</strong></li>
+    <li>Scroll down to the <strong>Contact Information</strong> section</li>
+    <li>Update the relevant fields</li>
+    <li>Click <strong>Save All Changes</strong></li>
+  </ol>
+
+  <h2>6.3 Adding Social Media Links</h2>
+  <p>In Admin Panel → Edit Homepage → Contact Information section, paste the full URLs for your social media profiles:</p>
+  <table>
+    <thead><tr><th>Platform</th><th>Example URL Format</th></tr></thead>
+    <tbody>
+      <tr><td>Facebook</td><td><span class="path">https://www.facebook.com/YourPageName</span></td></tr>
+      <tr><td>YouTube</td><td><span class="path">https://www.youtube.com/@YourChannelName</span></td></tr>
+      <tr><td>WhatsApp</td><td><span class="path">https://wa.me/260XXXXXXXXX</span> (replace with your number)</td></tr>
+      <tr><td>Instagram</td><td><span class="path">https://www.instagram.com/YourProfile</span></td></tr>
+    </tbody>
+  </table>
+
+  <h2>6.4 Regular Maintenance Checklist</h2>
+  <p>We recommend performing these tasks regularly to keep the website up to date:</p>
+  <table>
+    <thead><tr><th>Frequency</th><th>Task</th></tr></thead>
+    <tbody>
+      <tr><td><span class="tag-cell">Weekly</span></td><td>Add the latest Shabbat sermon to the Sermons section</td></tr>
+      <tr><td><span class="tag-cell">Weekly</span></td><td>Check and respond to new prayer requests (mark as Prayed)</td></tr>
+      <tr><td><span class="tag-cell">Weekly</span></td><td>Upload photos from that week's services to the Gallery</td></tr>
+      <tr><td><span class="tag-cell">Monthly</span></td><td>Add upcoming events for the next month</td></tr>
+      <tr><td><span class="tag-cell">Monthly</span></td><td>Review and remove past events that are no longer relevant</td></tr>
+      <tr><td><span class="tag-cell">Monthly</span></td><td>Export the newsletter subscriber list for your email campaigns</td></tr>
+      <tr><td><span class="tag-cell">Quarterly</span></td><td>Update the About page content if anything has changed</td></tr>
+      <tr><td><span class="tag-cell">Quarterly</span></td><td>Review and update service times if they change</td></tr>
+      <tr><td><span class="tag-cell">Annually</span></td><td>Update the Biblical Feast Calendar for the new Hebrew year</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout callout-tip">
+    <div class="callout-title">💡 Backing Up Your Data</div>
+    All your website data is stored in the <span class="path">C:\HouseOfIsrael\data\</span> folder as JSON files. Copy this folder to a USB drive or cloud storage (Google Drive, OneDrive) regularly as a backup. If anything goes wrong, simply copy the backed-up files back.
+  </div>
+
+  <div class="page-footer">House of Israel Assembly — Website User Manual v1.0 | Chapter 6: Maintenance</div>
+</div>
+
+<div class="page-break"></div>
+
+<!-- ============================= CHAPTER 7 ============================= -->
+<div class="content-page">
+  <div class="ch-header">
+    <span class="ch-num">Chapter 7</span>
+    <div class="ch-title">Troubleshooting</div>
+  </div>
+
+  <table>
+    <thead><tr><th>Problem</th><th>Likely Cause</th><th>Solution</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>"Site can't be reached" in browser</td>
+        <td>Server is not running</td>
+        <td>Double-click START.bat. Look for the confirmation message in the black window.</td>
+      </tr>
+      <tr>
+        <td>Admin login says "Invalid credentials"</td>
+        <td>Wrong username or password</td>
+        <td>Username is <code>admin</code> (all lowercase). If password was changed and forgotten, contact your web developer to reset it.</td>
+      </tr>
+      <tr>
+        <td>START.bat closes immediately</td>
+        <td>Node.js not installed or a code error</td>
+        <td>Right-click START.bat → "Run as administrator". Or open Command Prompt, navigate to the folder, and type <code>node server.js</code> to see the full error message.</td>
+      </tr>
+      <tr>
+        <td>Sermons / Events not loading on public site</td>
+        <td>Server is not running or browser cache</td>
+        <td>Ensure START.bat is running. Press Ctrl+Shift+R to force-refresh the page in your browser.</td>
+      </tr>
+      <tr>
+        <td>Image upload fails in gallery</td>
+        <td>File is too large or wrong format</td>
+        <td>Images must be under 5 MB. Accepted formats: JPG, PNG, WEBP. Resize the image before uploading.</td>
+      </tr>
+      <tr>
+        <td>Website looks broken / no styles</td>
+        <td>Files in the wrong location or browser cache</td>
+        <td>Ensure files are in <span class="path">C:\HouseOfIsrael\public\css\</span>. Hard refresh with Ctrl+Shift+R.</td>
+      </tr>
+      <tr>
+        <td>Admin panel shows "Token expired"</td>
+        <td>You were logged in for more than 24 hours</td>
+        <td>This is normal security behaviour. Simply log in again.</td>
+      </tr>
+      <tr>
+        <td>Port 3000 already in use</td>
+        <td>Another application is using port 3000</td>
+        <td>Open Task Manager → End Task on any "node.exe" processes. Then restart START.bat.</td>
+      </tr>
+      <tr>
+        <td>Animations not working</td>
+        <td>No internet connection (CDN libraries not loading)</td>
+        <td>The website requires internet access to load animation libraries (AOS, Font Awesome) from the web. Check your internet connection.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Getting Technical Support</h2>
+  <p>If you encounter an issue not listed above, contact your web developer with:</p>
+  <ol>
+    <li>A description of what you were trying to do</li>
+    <li>The exact error message (take a screenshot if possible)</li>
+    <li>The content of the black Command Prompt window (if it shows errors)</li>
+  </ol>
+
+  <div class="callout callout-info">
+    <div class="callout-title">ℹ️ Error Logs</div>
+    If the server shows errors in the Command Prompt window, copy the text (right-click → Select All → Enter) and send it to your developer. This helps diagnose problems quickly.
+  </div>
+
+  <div class="page-footer">House of Israel Assembly — Website User Manual v1.0 | Chapter 7: Troubleshooting</div>
+</div>
+
+<div class="page-break"></div>
+
+<!-- ============================= APPENDIX ============================= -->
+<div class="content-page">
+  <div class="ch-header">
+    <span class="ch-num">Appendix</span>
+    <div class="ch-title">Quick Reference Card</div>
+  </div>
+
+  <h2>Essential URLs</h2>
+  <table>
+    <thead><tr><th>Page</th><th>Local URL</th></tr></thead>
+    <tbody>
+      <tr><td>Homepage</td><td><span class="url">http://localhost:3000</span></td></tr>
+      <tr><td>About Page</td><td><span class="url">http://localhost:3000/about.html</span></td></tr>
+      <tr><td>Sermons</td><td><span class="url">http://localhost:3000/sermons.html</span></td></tr>
+      <tr><td>Events</td><td><span class="url">http://localhost:3000/events.html</span></td></tr>
+      <tr><td>Gallery</td><td><span class="url">http://localhost:3000/gallery.html</span></td></tr>
+      <tr><td>Contact</td><td><span class="url">http://localhost:3000/contact.html</span></td></tr>
+      <tr><td>Give (Donations)</td><td><span class="url">http://localhost:3000/give.html</span></td></tr>
+      <tr><td>Admin Panel</td><td><span class="url">http://localhost:3000/admin</span></td></tr>
+    </tbody>
+  </table>
+
+  <h2>Admin Panel Sections</h2>
+  <table>
+    <thead><tr><th>Section</th><th>What It Does</th></tr></thead>
+    <tbody>
+      <tr><td>Dashboard</td><td>Overview stats and quick action shortcuts</td></tr>
+      <tr><td>Edit Homepage</td><td>Update hero text, about text, rabbi quote, contact info</td></tr>
+      <tr><td>Manage Sermons</td><td>Add, edit, delete teachings with YouTube links</td></tr>
+      <tr><td>Manage Events</td><td>Add, edit, delete events and feast day entries</td></tr>
+      <tr><td>Manage Gallery</td><td>Upload and delete community photos</td></tr>
+      <tr><td>Prayer Requests</td><td>View submissions, mark as prayed</td></tr>
+      <tr><td>Newsletter</td><td>View subscriber email list</td></tr>
+      <tr><td>Settings</td><td>Change admin password, view system info</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Default Login Credentials</h2>
+  <div class="cred-box">
+    <h4>Admin Login — Change Immediately!</h4>
+    <div class="cred-row"><span class="cred-label">URL:</span><span class="cred-value">http://localhost:3000/admin</span></div>
+    <div class="cred-row"><span class="cred-label">Username:</span><span class="cred-value">admin</span></div>
+    <div class="cred-row"><span class="cred-label">Password:</span><span class="cred-value">hoisrael2025</span></div>
+    <div style="margin-top:12px;padding:10px;background:rgba(201,168,76,0.1);border-radius:4px;font-size:9pt;">
+      <span style="color:var(--gold);">⚠️</span> <span style="color:rgba(255,255,255,0.6);">Record your new password in a safe place after changing it. There is no password recovery system — if lost, a developer must reset it manually.</span>
+    </div>
+  </div>
+
+  <h2>Data File Locations</h2>
+  <table>
+    <thead><tr><th>File</th><th>Contains</th></tr></thead>
+    <tbody>
+      <tr><td><span class="path">data\content.json</span></td><td>All homepage editable text content</td></tr>
+      <tr><td><span class="path">data\sermons.json</span></td><td>All sermon records</td></tr>
+      <tr><td><span class="path">data\events.json</span></td><td>All event records</td></tr>
+      <tr><td><span class="path">data\gallery.json</span></td><td>Gallery image metadata</td></tr>
+      <tr><td><span class="path">data\prayer-requests.json</span></td><td>All submitted prayer requests</td></tr>
+      <tr><td><span class="path">data\newsletter.json</span></td><td>All newsletter subscriber emails</td></tr>
+      <tr><td><span class="path">uploads\</span></td><td>All uploaded gallery image files</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Backup Instructions</h2>
+  <p>To back up your website data, copy the following two folders to a USB drive or cloud storage:</p>
+  <ul>
+    <li><span class="path">C:\HouseOfIsrael\data\</span> — All website content</li>
+    <li><span class="path">C:\HouseOfIsrael\uploads\</span> — All gallery images</li>
+  </ul>
+  <p>Do this at least once a month, or after significant changes.</p>
+
+  <hr class="section-divider">
+  <div style="text-align:center;margin-top:30px;">
+    <div style="font-size:40px;color:var(--gold);margin-bottom:14px;">✡</div>
+    <div style="font-family:'Cinzel',serif;font-size:16pt;color:var(--dark);margin-bottom:6px;">House of Israel Assembly</div>
+    <div style="color:var(--muted);font-size:9pt;letter-spacing:2px;text-transform:uppercase;">Burma Barracks Chapel · Lusaka, Zambia</div>
+    <div style="margin-top:16px;font-family:'Courier New',monospace;font-size:1.4em;color:var(--gold);">שְׁמַע יִשְׂרָאֵל יְהוָה אֱלֹהֵינוּ יְהוָה אֶחָד</div>
+    <div style="color:var(--muted);font-size:9pt;margin-top:6px;font-style:italic;">Shema Yisrael YHWH Eloheinu YHWH Echad</div>
+    <div style="color:var(--muted);font-size:8.5pt;margin-top:4px;">Hear, O Israel: YHWH our God, YHWH is One</div>
+  </div>
+  <hr class="section-divider">
+
+  <div style="text-align:center;color:var(--muted);font-size:8pt;margin-top:20px;">
+    <strong>House of Israel Assembly — Website User Manual</strong><br>
+    Version 1.0 · June 2025 · Confidential — For Internal Use Only<br>
+    Website built for Rabbi Dr. Phillip Banda and the Hebrew Community at Burma Barracks Chapel, Lusaka, Zambia
+  </div>
+
+</div>
+
+</body>
+</html>

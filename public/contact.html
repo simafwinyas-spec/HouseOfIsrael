@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | House of Israel Assembly</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Lato:ital,wght@0,300;0,400;0,700;1,300&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .contact-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 60px; align-items: start; }
+    .contact-info-card {
+      background: var(--dark-2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 40px;
+    }
+    .c-info-item {
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .c-info-item:last-of-type { border-bottom: none; }
+    .c-icon {
+      width: 50px; height: 50px;
+      background: rgba(201,168,76,0.1);
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .c-info-item strong {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 4px;
+    }
+    .c-info-item p { color: var(--text-muted); font-size: 0.93rem; }
+    @media (max-width: 768px) {
+      .contact-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+<canvas id="particles"></canvas>
+
+<nav class="navbar" id="navbar">
+  <div class="nav-wrap">
+    <a href="index.html" class="nav-logo">
+      <span class="logo-star">✡</span>
+      <div class="logo-text">
+        <span class="logo-main">House of Israel</span>
+        <span class="logo-sub">Assembly</span>
+      </div>
+    </a>
+    <div class="nav-menu" id="navMenu">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="about.html" class="nav-link">About</a>
+      <a href="sermons.html" class="nav-link">Sermons</a>
+      <a href="events.html" class="nav-link">Events</a>
+      <a href="gallery.html" class="nav-link">Gallery</a>
+      <a href="contact.html" class="nav-link active">Contact</a>
+      <a href="give.html" class="nav-link give-link">Give ✡</a>
+    </div>
+    <div class="nav-toggle" id="navToggle"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a>
+      <i class="fas fa-chevron-right" style="font-size:0.6rem"></i>
+      <span style="color:var(--gold)">Contact</span>
+    </div>
+    <div class="section-tag">Get in Touch</div>
+    <h1>Contact <span class="gold">Us</span></h1>
+    <p>We'd love to hear from you. Shalom!</p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+    <div class="contact-grid">
+      <!-- Contact Info -->
+      <div data-aos="fade-right">
+        <div class="section-tag">Our Information</div>
+        <h2 class="section-title">We're Here<br><span class="gold">for You</span></h2>
+        <div class="gold-line"></div>
+        <p class="section-text" style="margin-bottom:30px;">Whether you have questions about our services, want to know more about Hebrew roots, or need prayer — we are here. Don't hesitate to reach out.</p>
+
+        <div class="contact-info-card">
+          <div class="c-info-item">
+            <div class="c-icon"><i class="fas fa-map-marker-alt"></i></div>
+            <div>
+              <strong>Our Location</strong>
+              <p>Burma Barracks Chapel<br>Lusaka, Zambia</p>
+            </div>
+          </div>
+          <div class="c-info-item">
+            <div class="c-icon"><i class="fas fa-phone"></i></div>
+            <div>
+              <strong>Phone</strong>
+              <p>+260 XXX XXX XXX</p>
+            </div>
+          </div>
+          <div class="c-info-item">
+            <div class="c-icon"><i class="fas fa-envelope"></i></div>
+            <div>
+              <strong>Email</strong>
+              <p>info@houseofisraelassembly.org</p>
+            </div>
+          </div>
+          <div class="c-info-item">
+            <div class="c-icon"><i class="fas fa-clock"></i></div>
+            <div>
+              <strong>Service Times</strong>
+              <p>Saturday: 9:00 AM – 12:00 PM<br>Wednesday: 6:00 PM – 8:00 PM<br>Friday: 7:00 PM – 9:00 PM</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="social-row" style="margin-top:28px;">
+          <a href="#" class="s-btn" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="s-btn" title="YouTube"><i class="fab fa-youtube"></i></a>
+          <a href="#" class="s-btn" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          <a href="#" class="s-btn" title="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="s-btn" title="TikTok"><i class="fab fa-tiktok"></i></a>
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <div data-aos="fade-left">
+        <div class="form-box">
+          <h3 style="font-family:var(--font-h);font-size:1.4rem;margin-bottom:6px;color:var(--white);">Send Us a Message</h3>
+          <p style="color:var(--text-muted);font-size:0.88rem;margin-bottom:28px;">Fill out the form below and we will get back to you within 24 hours.</p>
+          <form class="form-stack" id="contactForm">
+            <div class="form-row">
+              <div class="fg">
+                <input type="text" name="cname" placeholder="Your Full Name" required>
+              </div>
+              <div class="fg">
+                <input type="email" name="cemail" placeholder="Your Email Address" required>
+              </div>
+            </div>
+            <div class="fg">
+              <input type="tel" name="cphone" placeholder="Phone Number (optional)">
+            </div>
+            <div class="fg">
+              <select name="csubject">
+                <option value="" disabled selected>Subject / Topic</option>
+                <option>General Enquiry</option>
+                <option>Prayer Request</option>
+                <option>Joining the Community</option>
+                <option>Hebrew Torah Study</option>
+                <option>Event Information</option>
+                <option>Speaking / Booking</option>
+                <option>Donation / Giving</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="fg">
+              <textarea name="cmessage" rows="6" placeholder="Your message..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-gold full-w">
+              <i class="fas fa-paper-plane"></i> Send Message
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Map placeholder -->
+    <div class="map-box" style="margin-top:70px;aspect-ratio:auto;min-height:350px;border-radius:8px;" data-aos="fade-up">
+      <div class="map-ph" style="text-align:center;padding:40px;">
+        <i class="fas fa-map-marker-alt"></i>
+        <p style="font-family:var(--font-h);font-size:1.2rem;color:var(--gold);margin:10px 0 5px;">Burma Barracks Chapel</p>
+        <p style="margin-bottom:20px;">Lusaka, Zambia</p>
+        <a href="https://www.google.com/maps/search/Burma+Barracks+Chapel+Lusaka+Zambia" target="_blank" class="btn btn-outline-gold">
+          <i class="fas fa-directions"></i> Get Directions
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section dark-bg">
+  <div class="container">
+    <div class="section-header" data-aos="fade-up">
+      <div class="section-tag light">FAQ</div>
+      <h2 class="section-title">Frequently Asked <span class="gold">Questions</span></h2>
+      <div class="gold-line centered"></div>
+    </div>
+    <div style="max-width:800px;margin:0 auto;display:flex;flex-direction:column;gap:16px;">
+      <details style="background:var(--dark-3);border:1px solid var(--border);border-radius:6px;padding:22px 28px;cursor:pointer;" data-aos="fade-up">
+        <summary style="font-family:var(--font-h);font-size:1rem;font-weight:700;color:var(--white);list-style:none;display:flex;justify-content:space-between;align-items:center;">
+          What is a Hebrew Community / Hebrew Roots assembly? <i class="fas fa-plus" style="color:var(--gold);font-size:0.8rem;"></i>
+        </summary>
+        <p style="color:var(--text-muted);font-size:0.9rem;line-height:1.75;margin-top:14px;">A Hebrew Roots assembly is a congregation of believers who study the Bible through its original Hebrew cultural and linguistic context. We observe Biblical feasts, the Shabbat, and seek to understand the full counsel of God as originally given.</p>
+      </details>
+      <details style="background:var(--dark-3);border:1px solid var(--border);border-radius:6px;padding:22px 28px;cursor:pointer;" data-aos="fade-up">
+        <summary style="font-family:var(--font-h);font-size:1rem;font-weight:700;color:var(--white);list-style:none;display:flex;justify-content:space-between;align-items:center;">
+          Is this only for Jewish people? <i class="fas fa-plus" style="color:var(--gold);font-size:0.8rem;"></i>
+        </summary>
+        <p style="color:var(--text-muted);font-size:0.9rem;line-height:1.75;margin-top:14px;">Absolutely not! The God of Israel calls people of every nation, tribe, and tongue. We welcome all who are hungry for the pure Word of God, regardless of background, ethnicity, or denomination. All are welcome at House of Israel Assembly.</p>
+      </details>
+      <details style="background:var(--dark-3);border:1px solid var(--border);border-radius:6px;padding:22px 28px;cursor:pointer;" data-aos="fade-up">
+        <summary style="font-family:var(--font-h);font-size:1rem;font-weight:700;color:var(--white);list-style:none;display:flex;justify-content:space-between;align-items:center;">
+          Do I need to know Hebrew to join? <i class="fas fa-plus" style="color:var(--gold);font-size:0.8rem;"></i>
+        </summary>
+        <p style="color:var(--text-muted);font-size:0.9rem;line-height:1.75;margin-top:14px;">Not at all. Beginners are warmly welcomed. Rabbi Dr. Banda teaches in a way that is accessible to all levels. We also offer Hebrew language classes for those who wish to learn.</p>
+      </details>
+      <details style="background:var(--dark-3);border:1px solid var(--border);border-radius:6px;padding:22px 28px;cursor:pointer;" data-aos="fade-up">
+        <summary style="font-family:var(--font-h);font-size:1rem;font-weight:700;color:var(--white);list-style:none;display:flex;justify-content:space-between;align-items:center;">
+          How can I get involved in the community? <i class="fas fa-plus" style="color:var(--gold);font-size:0.8rem;"></i>
+        </summary>
+        <p style="color:var(--text-muted);font-size:0.9rem;line-height:1.75;margin-top:14px;">Simply come to any of our services! Shabbat is held every Saturday at 9AM. You can also join our WhatsApp community group, volunteer for events, or enroll in our Torah study classes.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="f-logo"><span class="f-star">✡</span><div><span class="f-logo-main">House of Israel</span><span class="f-logo-sub">Assembly</span></div></div>
+        <p class="f-desc">A Hebrew Community dedicated to the pure, unadulterated Word of God through Hebrew lenses.</p>
+        <div class="f-social">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+          <a href="#"><i class="fab fa-whatsapp"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul class="f-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="sermons.html">Sermons</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Service Times</h4>
+        <ul class="f-links">
+          <li><a href="#">Shabbat – Saturday 9AM</a></li>
+          <li><a href="#">Torah Study – Wednesday 6PM</a></li>
+          <li><a href="#">Prayer Night – Friday 7PM</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact Us</h4>
+        <div class="f-contact">
+          <p><i class="fas fa-map-marker-alt"></i> Burma Barracks Chapel, Lusaka</p>
+          <p><i class="fas fa-phone"></i> +260 XXX XXX XXX</p>
+          <p><i class="fas fa-envelope"></i> info@houseofisraelassembly.org</p>
+        </div>
+        <div class="heb-box">
+          <p class="heb-text">שְׁמַע יִשְׂרָאֵל</p>
+          <p class="heb-trans">Shema Yisrael — Hear, O Israel</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 House of Israel Assembly. All Rights Reserved.</p>
+      <p><a href="/admin">Admin Panel</a></p>
+    </div>
+  </div>
+</footer>
+
+<button id="backTop"><i class="fas fa-chevron-up"></i></button>
+<div id="toast"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

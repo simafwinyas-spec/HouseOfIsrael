@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "caption": "Shabbat Service",
+    "category": "Service",
+    "filename": "",
+    "featured": true
+  },
+  {
+    "id": 2,
+    "caption": "Torah Study Session",
+    "category": "Study",
+    "filename": "",
+    "featured": false
+  },
+  {
+    "id": 3,
+    "caption": "Community Fellowship",
+    "category": "Community",
+    "filename": "",
+    "featured": false
+  },
+  {
+    "id": 4,
+    "caption": "Youth Program",
+    "category": "Youth",
+    "filename": "",
+    "featured": false
+  },
+  {
+    "id": 5,
+    "caption": "Feast Day Celebration",
+    "category": "Events",
+    "filename": "",
+    "featured": false
+  },
+  {
+    "id": 6,
+    "caption": "Prayer Meeting",
+    "category": "Prayer",
+    "filename": "",
+    "featured": false
+  }
+]
