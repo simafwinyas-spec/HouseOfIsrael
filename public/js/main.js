@@ -95,7 +95,7 @@ function initParticles() {
       ctx.translate(this.x, this.y);
       ctx.rotate(this.rotation * Math.PI / 180);
       ctx.globalAlpha = this.opacity;
-      ctx.fillStyle = '#c9a84c';
+      ctx.fillStyle = '#1e40af';
       ctx.font = `${this.size}px serif`;
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';

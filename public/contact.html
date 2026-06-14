@@ -12,23 +12,24 @@
   <style>
     .contact-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 60px; align-items: start; }
     .contact-info-card {
-      background: var(--dark-2);
-      border: 1px solid var(--border);
+      background: #ffffff;
+      border: 1px solid rgba(30,64,175,0.12);
       border-radius: 8px;
       padding: 40px;
+      box-shadow: 0 4px 20px rgba(10,22,40,0.06);
     }
     .c-info-item {
       display: flex;
       gap: 18px;
       align-items: flex-start;
       padding: 20px 0;
-      border-bottom: 1px solid var(--border);
+      border-bottom: 1px solid rgba(30,64,175,0.1);
     }
     .c-info-item:last-of-type { border-bottom: none; }
     .c-icon {
       width: 50px; height: 50px;
-      background: rgba(201,168,76,0.1);
-      border: 1px solid var(--border);
+      background: rgba(30,64,175,0.08);
+      border: 1px solid rgba(30,64,175,0.15);
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -46,7 +47,32 @@
       color: var(--gold);
       margin-bottom: 4px;
     }
-    .c-info-item p { color: var(--text-muted); font-size: 0.93rem; }
+    .c-info-item p { color: var(--text-muted); font-size: 0.93rem; line-height: 1.7; }
+    /* Contact page form overrides for light background */
+    .contact-form-box {
+      background: #ffffff;
+      border: 1px solid rgba(30,64,175,0.12);
+      border-radius: 8px;
+      padding: 40px;
+      box-shadow: 0 4px 20px rgba(10,22,40,0.06);
+    }
+    .contact-form-box .form-title { color: var(--dark); font-family: var(--font-h); font-size: 1.4rem; margin-bottom: 6px; }
+    .contact-form-box .form-sub { color: var(--text-muted); font-size: 0.88rem; margin-bottom: 28px; }
+    .contact-form-box .fg input,
+    .contact-form-box .fg textarea,
+    .contact-form-box .fg select {
+      background: var(--bg-2);
+      border: 1px solid rgba(30,64,175,0.18);
+      color: var(--dark);
+    }
+    .contact-form-box .fg input::placeholder,
+    .contact-form-box .fg textarea::placeholder { color: rgba(10,22,40,0.35); }
+    .contact-form-box .fg input:focus,
+    .contact-form-box .fg textarea:focus,
+    .contact-form-box .fg select:focus { border-color: var(--gold); background: #ffffff; }
+    .contact-form-box .fg select option { background: #ffffff; color: var(--dark); }
+    /* FAQ text on dark cards inside light section */
+    .faq-answer { color: rgba(255,255,255,0.75) !important; }
     @media (max-width: 768px) {
       .contact-grid { grid-template-columns: 1fr; }
     }
@@ -104,22 +130,29 @@
           <div class="c-info-item">
             <div class="c-icon"><i class="fas fa-map-marker-alt"></i></div>
             <div>
-              <strong>Our Location</strong>
-              <p>Burma Barracks Chapel<br>Lusaka, Zambia</p>
+              <strong>The National HQ</strong>
+              <p>Burma Memorial Hall<br>Burma Barracks<br>P.O.Box 50374, Lusaka</p>
             </div>
           </div>
           <div class="c-info-item">
             <div class="c-icon"><i class="fas fa-phone"></i></div>
             <div>
-              <strong>Phone</strong>
-              <p>+260 XXX XXX XXX</p>
+              <strong>Contact Rabbi's Office</strong>
+              <p>+260 978 523 471<br>+260 973 808 942</p>
+            </div>
+          </div>
+          <div class="c-info-item">
+            <div class="c-icon"><i class="fas fa-phone-alt"></i></div>
+            <div>
+              <strong>Administration</strong>
+              <p>+260 977 298 837<br>+260 979 568 854</p>
             </div>
           </div>
           <div class="c-info-item">
             <div class="c-icon"><i class="fas fa-envelope"></i></div>
             <div>
               <strong>Email</strong>
-              <p>info@houseofisraelassembly.org</p>
+              <p>rabbibanda.pb@gmail.com</p>
             </div>
           </div>
           <div class="c-info-item">
@@ -142,9 +175,9 @@
 
       <!-- Contact Form -->
       <div data-aos="fade-left">
-        <div class="form-box">
-          <h3 style="font-family:var(--font-h);font-size:1.4rem;margin-bottom:6px;color:var(--white);">Send Us a Message</h3>
-          <p style="color:var(--text-muted);font-size:0.88rem;margin-bottom:28px;">Fill out the form below and we will get back to you within 24 hours.</p>
+        <div class="contact-form-box">
+          <h3 class="form-title">Send Us a Message</h3>
+          <p class="form-sub">Fill out the form below and we will get back to you within 24 hours.</p>
           <form class="form-stack" id="contactForm">
             <div class="form-row">
               <div class="fg">
@@ -185,8 +218,8 @@
     <div class="map-box" style="margin-top:70px;aspect-ratio:auto;min-height:350px;border-radius:8px;" data-aos="fade-up">
       <div class="map-ph" style="text-align:center;padding:40px;">
         <i class="fas fa-map-marker-alt"></i>
-        <p style="font-family:var(--font-h);font-size:1.2rem;color:var(--gold);margin:10px 0 5px;">Burma Barracks Chapel</p>
-        <p style="margin-bottom:20px;">Lusaka, Zambia</p>
+        <p style="font-family:var(--font-h);font-size:1.2rem;color:var(--gold);margin:10px 0 5px;">Burma Memorial Hall</p>
+        <p style="margin-bottom:20px;color:var(--text-muted);">Burma Barracks, Lusaka</p>
         <a href="https://www.google.com/maps/search/Burma+Barracks+Chapel+Lusaka+Zambia" target="_blank" class="btn btn-outline-gold">
           <i class="fas fa-directions"></i> Get Directions
         </a>
@@ -208,25 +241,25 @@
         <summary style="font-family:var(--font-h);font-size:1rem;font-weight:700;color:var(--white);list-style:none;display:flex;justify-content:space-between;align-items:center;">
           What is a Hebrew Community / Hebrew Roots assembly? <i class="fas fa-plus" style="color:var(--gold);font-size:0.8rem;"></i>
         </summary>
-        <p style="color:var(--text-muted);font-size:0.9rem;line-height:1.75;margin-top:14px;">A Hebrew Roots assembly is a congregation of believers who study the Bible through its original Hebrew cultural and linguistic context. We observe Biblical feasts, the Shabbat, and seek to understand the full counsel of God as originally given.</p>
+        <p style="color:rgba(255,255,255,0.75);font-size:0.9rem;line-height:1.75;margin-top:14px;">A Hebrew Roots assembly is a congregation of believers who study the Bible through its original Hebrew cultural and linguistic context. We observe Biblical feasts, the Shabbat, and seek to understand the full counsel of God as originally given.</p>
       </details>
       <details style="background:var(--dark-3);border:1px solid var(--border);border-radius:6px;padding:22px 28px;cursor:pointer;" data-aos="fade-up">
         <summary style="font-family:var(--font-h);font-size:1rem;font-weight:700;color:var(--white);list-style:none;display:flex;justify-content:space-between;align-items:center;">
           Is this only for Jewish people? <i class="fas fa-plus" style="color:var(--gold);font-size:0.8rem;"></i>
         </summary>
-        <p style="color:var(--text-muted);font-size:0.9rem;line-height:1.75;margin-top:14px;">Absolutely not! The God of Israel calls people of every nation, tribe, and tongue. We welcome all who are hungry for the pure Word of God, regardless of background, ethnicity, or denomination. All are welcome at House of Israel Assembly.</p>
+        <p style="color:rgba(255,255,255,0.75);font-size:0.9rem;line-height:1.75;margin-top:14px;">Absolutely not! The God of Israel calls people of every nation, tribe, and tongue. We welcome all who are hungry for the pure Word of God, regardless of background, ethnicity, or denomination. All are welcome at House of Israel Assembly.</p>
       </details>
       <details style="background:var(--dark-3);border:1px solid var(--border);border-radius:6px;padding:22px 28px;cursor:pointer;" data-aos="fade-up">
         <summary style="font-family:var(--font-h);font-size:1rem;font-weight:700;color:var(--white);list-style:none;display:flex;justify-content:space-between;align-items:center;">
           Do I need to know Hebrew to join? <i class="fas fa-plus" style="color:var(--gold);font-size:0.8rem;"></i>
         </summary>
-        <p style="color:var(--text-muted);font-size:0.9rem;line-height:1.75;margin-top:14px;">Not at all. Beginners are warmly welcomed. Rabbi Dr. Banda teaches in a way that is accessible to all levels. We also offer Hebrew language classes for those who wish to learn.</p>
+        <p style="color:rgba(255,255,255,0.75);font-size:0.9rem;line-height:1.75;margin-top:14px;">Not at all. Beginners are warmly welcomed. Rabbi Dr. Banda teaches in a way that is accessible to all levels. We also offer Hebrew language classes for those who wish to learn.</p>
       </details>
       <details style="background:var(--dark-3);border:1px solid var(--border);border-radius:6px;padding:22px 28px;cursor:pointer;" data-aos="fade-up">
         <summary style="font-family:var(--font-h);font-size:1rem;font-weight:700;color:var(--white);list-style:none;display:flex;justify-content:space-between;align-items:center;">
           How can I get involved in the community? <i class="fas fa-plus" style="color:var(--gold);font-size:0.8rem;"></i>
         </summary>
-        <p style="color:var(--text-muted);font-size:0.9rem;line-height:1.75;margin-top:14px;">Simply come to any of our services! Shabbat is held every Saturday at 9AM. You can also join our WhatsApp community group, volunteer for events, or enroll in our Torah study classes.</p>
+        <p style="color:rgba(255,255,255,0.75);font-size:0.9rem;line-height:1.75;margin-top:14px;">Simply come to any of our services! Shabbat is held every Saturday at 9AM. You can also join our WhatsApp community group, volunteer for events, or enroll in our Torah study classes.</p>
       </details>
     </div>
   </div>
@@ -267,9 +300,10 @@
       <div class="footer-col">
         <h4>Contact Us</h4>
         <div class="f-contact">
-          <p><i class="fas fa-map-marker-alt"></i> Burma Barracks Chapel, Lusaka</p>
-          <p><i class="fas fa-phone"></i> +260 XXX XXX XXX</p>
-          <p><i class="fas fa-envelope"></i> info@houseofisraelassembly.org</p>
+          <p><i class="fas fa-map-marker-alt"></i> Burma Memorial Hall, Burma Barracks, Lusaka</p>
+          <p><i class="fas fa-phone"></i> +260 978 523 471 | +260 973 808 942</p>
+          <p><i class="fas fa-phone-alt"></i> Admin: +260 977 298 837</p>
+          <p><i class="fas fa-envelope"></i> rabbibanda.pb@gmail.com</p>
         </div>
         <div class="heb-box">
           <p class="heb-text">שְׁמַע יִשְׂרָאֵל</p>

@@ -1,2 +1,6 @@
-# Local Netlify folder
-.netlify
+﻿node_modules/
+uploads/
+*.log
+.env
+server.js.backup
+deno.lock
