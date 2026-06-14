@@ -8,7 +8,6 @@ const helmet = require('helmet');
 const cors = require('cors');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
 const JWT_SECRET = process.env.JWT_SECRET || 'hoisrael-secret-key-change-in-production';
 
 // Middleware
@@ -17,7 +16,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Static files
+// Static files (for local dev; Netlify will also serve via catch-all)
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/admin', express.static(path.join(__dirname, 'admin')));
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
@@ -62,19 +61,14 @@ const authMiddleware = (req, res, next) => {
 };
 
 // ======= PUBLIC API ROUTES =======
-
-// GET all site content
 app.get('/api/content', (req, res) => {
   res.json(readData('content.json'));
 });
 
-// GET sermons (public)
 app.get('/api/sermons', (req, res) => {
-  const sermons = readData('sermons.json');
-  res.json(sermons);
+  res.json(readData('sermons.json'));
 });
 
-// GET single sermon
 app.get('/api/sermons/:id', (req, res) => {
   const sermons = readData('sermons.json');
   const sermon = sermons.find(s => s.id === parseInt(req.params.id));
@@ -82,18 +76,15 @@ app.get('/api/sermons/:id', (req, res) => {
   res.json(sermon);
 });
 
-// GET events (public)
 app.get('/api/events', (req, res) => {
   const events = readData('events.json');
   res.json(events.sort((a, b) => new Date(a.date) - new Date(b.date)));
 });
 
-// GET gallery (public)
 app.get('/api/gallery', (req, res) => {
   res.json(readData('gallery.json'));
 });
 
-// POST prayer request
 app.post('/api/prayer', (req, res) => {
   const { name, email, request, anonymous } = req.body;
   if (!request) return res.status(400).json({ error: 'Prayer request text is required' });
@@ -112,7 +103,6 @@ app.post('/api/prayer', (req, res) => {
   res.json({ success: true, message: 'Prayer request submitted' });
 });
 
-// POST newsletter subscription
 app.post('/api/newsletter', (req, res) => {
   const { email } = req.body;
   if (!email) return res.status(400).json({ error: 'Email is required' });
@@ -125,7 +115,6 @@ app.post('/api/newsletter', (req, res) => {
   res.json({ success: true, message: 'Subscribed successfully' });
 });
 
-// POST contact form
 app.post('/api/contact', (req, res) => {
   const { name, email, subject, message } = req.body;
   if (!name || !email || !message) return res.status(400).json({ error: 'Required fields missing' });
@@ -133,7 +122,6 @@ app.post('/api/contact', (req, res) => {
 });
 
 // ======= ADMIN AUTH =======
-
 app.post('/api/admin/login', async (req, res) => {
   const { username, password } = req.body;
   const admin = readData('admin.json');
@@ -155,14 +143,11 @@ app.post('/api/admin/change-password', authMiddleware, async (req, res) => {
 });
 
 // ======= ADMIN API ROUTES =======
-
-// Update site content
 app.put('/api/admin/content', authMiddleware, (req, res) => {
   writeData('content.json', req.body);
   res.json({ success: true });
 });
 
-// Sermons CRUD
 app.post('/api/admin/sermons', authMiddleware, (req, res) => {
   const sermons = readData('sermons.json');
   const newSermon = { ...req.body, id: Date.now(), views: 0 };
@@ -187,7 +172,6 @@ app.delete('/api/admin/sermons/:id', authMiddleware, (req, res) => {
   res.json({ success: true });
 });
 
-// Events CRUD
 app.post('/api/admin/events', authMiddleware, (req, res) => {
   const events = readData('events.json');
   const newEvent = { ...req.body, id: Date.now() };
@@ -212,7 +196,6 @@ app.delete('/api/admin/events/:id', authMiddleware, (req, res) => {
   res.json({ success: true });
 });
 
-// Gallery upload & management
 app.post('/api/admin/gallery', authMiddleware, upload.single('image'), (req, res) => {
   if (!req.file) return res.status(400).json({ error: 'Image file required' });
   const gallery = readData('gallery.json');
@@ -241,7 +224,6 @@ app.delete('/api/admin/gallery/:id', authMiddleware, (req, res) => {
   res.json({ success: true });
 });
 
-// Prayer requests (admin view)
 app.get('/api/admin/prayers', authMiddleware, (req, res) => {
   res.json(readData('prayer-requests.json'));
 });
@@ -256,12 +238,10 @@ app.put('/api/admin/prayers/:id/prayed', authMiddleware, (req, res) => {
   res.json({ success: true });
 });
 
-// Newsletter subscribers (admin)
 app.get('/api/admin/newsletter', authMiddleware, (req, res) => {
   res.json(readData('newsletter.json'));
 });
 
-// Admin stats
 app.get('/api/admin/stats', authMiddleware, (req, res) => {
   const sermons = readData('sermons.json');
   const events = readData('events.json');
@@ -280,15 +260,22 @@ app.get('/api/admin/stats', authMiddleware, (req, res) => {
 app.get('/admin', (req, res) => res.sendFile(path.join(__dirname, 'admin', 'login.html')));
 app.get('/admin/dashboard', (req, res) => res.sendFile(path.join(__dirname, 'admin', 'dashboard.html')));
 
-// Fallback
+// Fallback (for SPA or missing routes)
 app.get('*', (req, res) => res.sendFile(path.join(__dirname, 'public', 'index.html')));
 
-app.listen(PORT, () => {
-  console.log('\n╔══════════════════════════════════════════════╗');
-  console.log('║   House of Israel Assembly Website           ║');
-  console.log('╠══════════════════════════════════════════════╣');
-  console.log(`║   Server running at: http://localhost:${PORT}   ║`);
-  console.log(`║   Admin panel:  http://localhost:${PORT}/admin  ║`);
-  console.log('║   Admin login:  admin / hoisrael2025         ║');
-  console.log('╚══════════════════════════════════════════════╝\n');
-});
+// ========== EXPORT FOR NETLIFY (SERVERLESS) ==========
+module.exports = app;
+
+// ========== LOCAL DEVELOPMENT SERVER ==========
+if (require.main === module) {
+  const PORT = process.env.PORT || 3000;
+  app.listen(PORT, () => {
+    console.log('\n╔══════════════════════════════════════════════╗');
+    console.log('║   House of Israel Assembly Website           ║');
+    console.log('╠══════════════════════════════════════════════╣');
+    console.log(`║   Server running at: http://localhost:${PORT}   ║`);
+    console.log(`║   Admin panel:  http://localhost:${PORT}/admin  ║`);
+    console.log('║   Admin login:  admin / hoisrael2025         ║');
+    console.log('╚══════════════════════════════════════════════╝\n');
+  });
+}
